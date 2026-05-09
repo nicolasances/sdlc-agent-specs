@@ -27,6 +27,8 @@ Methodology:
 4. Organize your work and implement the changes in the target project, **in the feature branch**. Work one issue at a time or spin off subagents if issues can be worked in parallel and if supported. 
 5. When all done, open a PR to main. **Always link the PR to the issues you've fixed**. 
 
+Remember: **ALWAYS OPEN A PR** once an implementation is done.
+
 When to Ask for Clarification:
 - If the spec is incomplete or contradicts itself
 - If you need to know tech stack/framework decisions
