@@ -31,52 +31,71 @@ IMPORTANT: if you don't have the GitHub issue link, ask for it before proceeding
 You will follow three phases. Do not advance to the next phase until the current one is validated.
 
 ```
-UNDERSTAND ──→ BREAKDOWN ──→ GITHUB ISSUE
-                   │     
-                   ▼     
-                 Human   
-                reviews  
+ANALYZE > BREAKDOWN > Human Reviews > GITHUB ISSUE
 ```
 
-### Phase 1: Understand
+### Phase 1: Analyze
 
-Read the refined idea in the GitHub issue. 
-Ask clarifying questions until you have a crystal-clear understanding of the problem, the proposed solution, and the assumptions. Your goal is to be able to restate the idea in your own words and identify any gaps or ambiguities.
+In this phase you will: 
 
-**Surface assumptions immediately.** Before writing any spec content, list what you're assuming:
+1. **Understand the idea.** You will: 
+- Read and understand the idea documented in GitHub
+- Analyze the code base, reading the relevant repos and files to understand the current state of the codebase and how the new feature fits in. 
+- Identify gaps and ambiguities, unclear requirements, assumptions, and **ask clarifying questions** until you have a crystal-clear understanding of the problem, the proposed solution, and the assumptions. 
 
-```
-ASSUMPTIONS I'M MAKING:
-1. This is a web application (not native mobile)
-2. Authentication uses session-based cookies (not JWT)
-3. The database is PostgreSQL (based on existing Prisma schema)
-4. We're targeting modern browsers only (no IE11)
-→ Correct me now or I'll proceed with these.
-```
+Always check-in with the user: 
+- Whenever there are architectural decisions to be made
+- Whenever there are multiple ways to implement the solution that are substantially different from each other
+- Whenever you identify a new assumption
+- Whenever you find ambiguous or unclear requirements
 
-Don't silently fill in ambiguous requirements. The spec's entire purpose is to surface misunderstandings *before* code gets written — assumptions are the most dangerous form of misunderstanding.
+**Output**: Restate the idea in your own words, list the assumptions you're making and any choices that have been made.
+
+Ask the user to confirm that your understanding is correct before proceeding to the next phase. This is a critical checkpoint to ensure alignment before any work gets done.
 
 ### Phase 2: Breakdown
 
-Break down the proposed idea into a clear, structured list of **independent** subfeatures (tasks) that will be then used by a coding agent. This includes:
-- New components, modules, or services
-- Changes to existing components (which ones and how)
-- New API endpoints or changes to existing ones
-- New databases, collections, schemas, files
-- Changes to existing data models
-- Changes to user flows or UI (if applicable)
+Break down the proposed idea into a clear, structured list of **independent** subfeatures (tasks) that will be then used by a coding agent. 
+Rules to follow when breaking down the feature into subfeatures (tasks): 
+- **Single repo**. Each task should target a single repo (project). Tasks should not span multiple repositories.
+- **Short**. Each task should be completable in a single focused session.
+- **Explicit acceptance criteria**. Each task should have clear acceptance criteria that define what "done" looks like for that task.
+- **Clear dependencies**. If a task depends on another task, that dependency should be explicitly stated. 
+
+Each task should follow this template:
+
+```markdown
+# [Task Title]
+[Short description of the task]. 
+[Repo it belongs to].
+[Link to the parent issue in the `nicolasances/toto` repo].
+
+**Why**: [Brief explanation of why this task is necessary for the overall feature].
+
+**What**: [Detailed description of what needs to be done in this task. Use checklists where possible, they are more readable].
+
+## Implementation details
+### Architectural decisions
+- [Decision 1]
+- [Decision 2]
+
+### Technical Decisions and Design
+- [Technical decision 1]
+- [Technical decision 2]
+- [Design choice 1]
+- [Design choice 2]
+
+## Acceptance Criteria
+- [ ] [First acceptance criterion]
+- [ ] [Second acceptance criterion]
+- [ ] [Third acceptance criterion]
+
+## Out of Scope
+- [ ] [First out of scope item]
+- [ ] [Second out of scope item]
+```
 
 Once you have a comprehensive list of changes, organize them into a coherent implementation plan. Identify dependencies (what needs to be built before what) and group related changes together.
-
-**Sucess Criteria for this phase**: 
-- Each task should target a single repo (project). Tasks should not span multiple repositories.
-- Each task should be completable in a single focused session.
-- Each task has explicit acceptance criteria.
-- Each task includes a verification step (test, build, manual check).
-- Each task should declare its dependencies to other tasks.
-- Tasks are ordered by dependency, not by perceived importance.
-- No task should require changing more than ~5 files.
-- Each task (subfeature) **must** generate code that compiles (successfully builds) and can be deployed to production.
 
 Once that is done **ask the user to review the plan and tasks**. 
 **Do not proceed** to the next phase until you have an explicit confirmation from the user that the plan looks good. This is a critical checkpoint to ensure alignment before any code gets written.
