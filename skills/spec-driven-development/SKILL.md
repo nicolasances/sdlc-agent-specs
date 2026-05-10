@@ -84,7 +84,7 @@ The plan should be reviewable: the human should be able to read it and say "yes,
 
 ### Phase 3: Implement
 
-Execute tasks one at a time following `incremental-implementation` and `test-driven-development` skills. 
+Implement tasks one at a time following `incremental-implementation` and `test-driven-development` skills. 
 
 ## Keeping the Spec Alive
 
