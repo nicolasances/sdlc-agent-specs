@@ -1,5 +1,5 @@
 ---
-name: structure-tasks
+name: breakdown-feature
 description: Creates structured tasks that will be then used by a coding agent. Use when starting a new project, feature, or significant change and no specification exists yet.
 ---
 
@@ -7,7 +7,7 @@ description: Creates structured tasks that will be then used by a coding agent. 
 
 ## Overview
 
-Starting from a refined idea clearly documented in a GitHub issue, write a clear, structured list of tasks to implement a new feature or project. Each task should be actionable, focused, and have explicit acceptance criteria.
+Starting from a refined idea clearly documented in a GitHub issue, break down the feature into a clear, structured list of subfeatures (tasks) that will be then used by a coding agent. Each task should be actionable, focused, and have explicit acceptance criteria.
 
 ## When to Use
 
@@ -28,14 +28,14 @@ A refined idea **must** have been documented in a GitHub issue in the `nicolasan
 Make sure to ask the user for the GitHub issue link if they haven't provided it. You will use the content of that issue as the starting point for your spec.
 IMPORTANT: if you don't have the GitHub issue link, ask for it before proceeding. **Do not proceed without it**.
 
-You will follow four phases. Do not advance to the next phase until the current one is validated.
+You will follow three phases. Do not advance to the next phase until the current one is validated.
 
 ```
-UNDERSTAND ──→ PLAN ──→ TASKS ──→ GITHUB ISSUE
-                │         │           
-                ▼         ▼           
-              Human     Human       
-             reviews   reviews     
+UNDERSTAND ──→ BREAKDOWN ──→ GITHUB ISSUE
+                   │     
+                   ▼     
+                 Human   
+                reviews  
 ```
 
 ### Phase 1: Understand
@@ -56,9 +56,9 @@ ASSUMPTIONS I'M MAKING:
 
 Don't silently fill in ambiguous requirements. The spec's entire purpose is to surface misunderstandings *before* code gets written — assumptions are the most dangerous form of misunderstanding.
 
-### Phase 2: Plan
+### Phase 2: Breakdown
 
-Plan all changes that would need to be made to implement the proposed idea. This includes:
+Break down the proposed idea into a clear, structured list of **independent** subfeatures (tasks) that will be then used by a coding agent. This includes:
 - New components, modules, or services
 - Changes to existing components (which ones and how)
 - New API endpoints or changes to existing ones
@@ -68,23 +68,20 @@ Plan all changes that would need to be made to implement the proposed idea. This
 
 Once you have a comprehensive list of changes, organize them into a coherent implementation plan. Identify dependencies (what needs to be built before what) and group related changes together.
 
-Once that is done **ask the user to review the plan**. 
+**Sucess Criteria for this phase**: 
+- Each task should target a single repo (project). Tasks should not span multiple repositories.
+- Each task should be completable in a single focused session.
+- Each task has explicit acceptance criteria.
+- Each task includes a verification step (test, build, manual check).
+- Each task should declare its dependencies to other tasks.
+- Tasks are ordered by dependency, not by perceived importance.
+- No task should require changing more than ~5 files.
+- Each task (subfeature) **must** generate code that compiles (successfully builds) and can be deployed to production.
+
+Once that is done **ask the user to review the plan and tasks**. 
 **Do not proceed** to the next phase until you have an explicit confirmation from the user that the plan looks good. This is a critical checkpoint to ensure alignment before any code gets written.
 
-### Phase 3: Tasks
-
-Break the plan into discrete, implementable tasks:
-
-- Each task should target a single repo (project). Tasks should not span multiple repositories.
-- Each task should be completable in a single focused session
-- Each task has explicit acceptance criteria
-- Each task includes a verification step (test, build, manual check)
-- Tasks are ordered by dependency, not by perceived importance
-- No task should require changing more than ~5 files
-
-Make sure the user reviews the task list and confirms that it looks good before proceeding to the next phase.
-
-### Phase 4: GitHub Issue
+### Phase 3: GitHub Issue
 
 For each task, create a corresponding GitHub issue in the **right repo**. Each task corresponds only to a single repo, so the issue should be generated on that repo. Each task should be a separate issue. 
 The issue title should be a concise summary of the task, and the body should include:
