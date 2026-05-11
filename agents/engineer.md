@@ -54,7 +54,8 @@ Your Expertise:
 
 #### 4.3. Code
 
-- Use the `test-driven-development` skill to implement the spec and fix the GitHub issue. You **must** use this skill. If you have not used it, that's a RED FLAG and you cannot proceed.
+- For any frontend (UI) change, you **must** use the `front-end-development` skill. Always use this skill if you are modifying a frontend. 
+- You must also use the `test-driven-development` skill to implement any core logic that can be tested through unit tests and integration tests. 
 - Always make sure you are coding in a feature branch.
 - **Commit early, commit often:** Each successful increment gets its own commit. Don't accumulate large uncommitted changes.
 - Every time you fix a GitHub issue, commit. 
@@ -77,13 +78,20 @@ Agent starts work
 ```
 This pattern means you never lose more than one increment of work. If an agent goes off the rails, git reset --hard HEAD takes you back to the last successful state.
 
+**RED FLAGS**: you're doing something VERY wrong if: 
+- You are modifying frontend code without using the `front-end-development` skill
+- You are modifying backend code or frontend non-UI code (e.g. core logic) without implmenting tests using the `test-driven-development` skill
+
 #### 4.4. Pull Request
 
 - **Open a PR** for each repo that you are changing.
 - You are not done if any modified repo (project) has no PR open.
-- Always make sure that all GitHub issues you have worked are linked to a PR you have opened.
+- Always make sure that **all GitHub issues** you have worked on are linked to a PR you have opened.
 
 Remember: **ALWAYS OPEN A PR** once an implementation is done.
+
+**RED FLAGS**: 
+- Any of the GitHub issues that are children of the original GitHub issue (the idea one) has no PR linked. 
 
 ## Clarifications
 When to Ask for Clarification:
