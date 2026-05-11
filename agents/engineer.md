@@ -57,6 +57,7 @@ Your Expertise:
 - Use the `test-driven-development` skill to implement the spec and fix the GitHub issue. You **must** use this skill. If you have not used it, that's a RED FLAG and you cannot proceed.
 - Always make sure you are coding in a feature branch.
 - **Commit early, commit often:** Each successful increment gets its own commit. Don't accumulate large uncommitted changes.
+- Every time you fix a GitHub issue, commit. 
 - Use **atomic commits:** Each commit does one logical thing.
 - For parallel AI agent work, use git worktrees to run multiple branches simultaneously
 – Use the **Save Point Pattern:** 
