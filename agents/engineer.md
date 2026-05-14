@@ -64,17 +64,21 @@ FOR EACH ISSUE:
 - You must also use the `test-driven-development` skill to implement any core logic that can be tested through unit tests and integration tests. 
 - You **MUST** always code in a feature branch.
 - **Commit often:** Each successful increment gets its own commit. Don't accumulate large uncommitted changes.
-- Use **atomic commits:** Each commit does one logical thing.
-
-This pattern means you never lose more than one increment of work. If an agent goes off the rails, git reset --hard HEAD takes you back to the last successful state.
+- Use **atomic commits:** Each commit does one logical thing. This pattern means you never lose more than one increment of work. If an agent goes off the rails, git reset --hard HEAD takes you back to the last successful state.
+- Whenever the task (implementation) involves a change to the project `toto-react` you **MUST** follow this worklow: 
+    1. Switch the frontend that uses `toto-react` to **Local Mode**. You **MUST** use the `switching-toto-react-mode` skill for that. 
+    2. Implement the changes
+    3. Switch back to **Package Mode**. Again, you **MUST** use the `switching-toto-react-mode` skill for that. 
 
 **Acceptance Criteria**: 
 - You have used either the `front-end-development` skill or the `test-driven-development` skill to implement the feature, or both, depending on the type of change you're making.
+- If making changes to `toto-react`, you have used the `switch-toto-react-mode` skill.
 
 **RED FLAGS**: 
 - You are modifying frontend code without using the `front-end-development` skill
 - You are modifying backend code or frontend non-UI code (e.g. core logic) without implmenting tests using the `test-driven-development` skill
 - You have a single big commit that contains all the changes for an issue instead of multiple smaller commits that each represent a logical increment of work.
+- You are making a change to `toto-react` without having used the `switch-toto-react-mode` skill.
 
 #### 4.4. Pull Request
 
