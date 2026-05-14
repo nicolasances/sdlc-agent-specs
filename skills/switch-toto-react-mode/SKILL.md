@@ -28,14 +28,11 @@ There are two modes:
 - You are making changes to the Next.js project itself that are unrelated to `toto-react`. In this case, you should keep using package mode to ensure you're testing against the stable version of `toto-react`.
 
 ## How to Switch Modes
-Follow the instructions in the [Switching between npm and local toto-react guide](./switching-toto-react-source.md) to switch between local and package modes. 
-The guide covers all the necessary changes to `package.json` and any Next.js configuration required to use the local source code of `toto-react`.
 
-You **MUST FOLLOW ALL STEPS** in the guide to ensure the switch is successful.
-
-After you have switched modes, you should 
-- run the appropriate test commands to verify that everything is working as expected
-- **ALWAYS** ask the User to test the app after making changes to `toto-react` in local mode, and after switching back to package mode to ensure that the published version works as expected.
+- Follow the instructions in the [Switching between npm and local toto-react guide](./switching-toto-react-source.md) to switch between local and package modes.  The guide covers all the necessary changes to `package.json` and any Next.js configuration required to use the local source code of `toto-react`. You **MUST FOLLOW ALL STEPS** in the guide to ensure the switch is successful.
+- After you have switched modes, you should 
+  - run the appropriate test commands to verify that everything is working as expected
+  - **ALWAYS** ask the User to test the app after making changes to `toto-react` in local mode, and after switching back to package mode to ensure that the published version works as expected.
 
 ## Common Rationalizations
 
