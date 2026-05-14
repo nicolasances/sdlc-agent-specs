@@ -70,6 +70,9 @@ FOR EACH ISSUE:
     2. Implement the changes
     3. Switch back to **Package Mode**. Again, you **MUST** use the `switching-toto-react-mode` skill for that. 
 
+**Coding Standards**: 
+- When coding in python, you **MUST** first read the `coding-standards/python-coding-standards.md` instructions in the `nicolasances/sdlc-agent-specs` GitHub repo.
+
 **Acceptance Criteria**: 
 - You have used either the `front-end-development` skill or the `test-driven-development` skill to implement the feature, or both, depending on the type of change you're making.
 - If making changes to `toto-react`, you have used the `switch-toto-react-mode` skill.
