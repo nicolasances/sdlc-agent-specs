@@ -213,14 +213,18 @@ Remove the `toto-react` entry from `paths`:
 
 ### 5. Force-reinstall the npm package
 
-After `npm install` in local mode, `node_modules/toto-react` is a symlink. When switching
-back to npm mode, npm will **not** replace this symlink automatically — it sees the version
-already matches. You must delete it first:
+After `npm install` in local mode, `node_modules/toto-react` is a symlink **and**
+`package-lock.json` records `"version": "file:../toto-react"`. A plain `npm install`
+reads the lock file first and re-creates the symlink even after you update `package.json`.
+You must delete the symlink **and** force npm to update the lock file:
 
 ```sh
 rm -rf node_modules/toto-react
-npm install
+npm install --save toto-react@"^0.1.1"
 ```
+
+> The `--save` flag with the explicit version rewrites the lock file entry so subsequent
+> `npm install` calls fetch the published package instead of re-symlinking.
 
 ### 6. Clear the Next.js cache and run
 
@@ -246,4 +250,4 @@ npm run dev      # next dev --turbopack
 | `tailwind.config.ts` content | `node_modules/toto-react/dist/**/*.{js,mjs}` | `../toto-react/src/**` | `../toto-react/src/**` |
 | `tsconfig.json` paths | no toto-react entry | `"toto-react": ["../toto-react/src/index.ts"]` | `"toto-react": ["../toto-react/src/index.ts"]` |
 | toto-react node_modules symlinks | not needed | `next`, `react`, `react-dom`, `@types/react`, `@types/react-dom` | `next`, `react`, `react-dom`, `@types/react`, `@types/react-dom` |
-| Before switching | `rm -rf node_modules/toto-react && rm -rf .next` | (symlink is created by npm) | (symlink is created by npm) |
+| Before switching | `rm -rf node_modules/toto-react && npm install --save toto-react@"^0.1.1"` && `rm -rf .next` | (symlink is created by npm) | (symlink is created by npm) |
