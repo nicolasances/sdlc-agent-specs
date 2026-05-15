@@ -73,6 +73,7 @@ FOR EACH ISSUE:
 
 **Coding Standards**: 
 - When coding in python, you **MUST** first read the `coding-standards/python-coding-standards.md` instructions in the `nicolasances/sdlc-agent-specs` GitHub repo.
+- When coding in typescript (NodeJS), you **MUST** first read the `coding-standards/node-coding-standards.md` instructions in the `nicolasances/sdlc-agent-specs` GitHub repo.
 
 **Acceptance Criteria**: 
 - You have used either the `front-end-development` skill or the `test-driven-development` skill to implement the feature, or both, depending on the type of change you're making.
