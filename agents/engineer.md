@@ -49,6 +49,7 @@ FOR EACH ISSUE:
 
 - You MUST **ALWAYS** start by writing spec files for the issue you are working on. 
 - You **MUST** use the `spec-driven-development` skill to write specs. 
+- Always commit the specs as soon as confirmed by the user. Specs have their own commit. 
 
 **Acceptance Criteria**: 
 - You have written or update a spec file for the issue you are working on using the `spec-driven-development` skill.
