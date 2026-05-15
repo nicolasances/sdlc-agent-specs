@@ -21,6 +21,10 @@ async findByLanguageWithStats({ language, userId, page, pageSize }: {
 async findByLanguageWithStats({ language, userId, page, pageSize }: { language: string; userId: string; page: number; pageSize: number; }): Promise<VocabularyWithStatsResult> { ... }
 ```
 
+**Exeptions**: 
+- **Arrays** can be broken into multiple lines. 
+- Complex objects and structures can be broken into multiple lines if the number of fields or the nesting complexity are too high.
+
 ### Use Interfaces and Classes rather than inline objects
 
 ```typescript
