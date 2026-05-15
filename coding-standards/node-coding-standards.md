@@ -41,3 +41,7 @@ interface SomeFunctionInput {
     pageSize: number
 }
 ```
+
+## Tests
+
+- When writing unit tests **ALWAYS** use Mocha. 
