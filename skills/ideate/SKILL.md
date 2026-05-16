@@ -7,12 +7,19 @@ description: Refines ideas iteratively. Refine ideas through structured divergen
 
 Refines raw ideas into sharp, actionable concepts worth building through structured divergent and convergent thinking.
 
+## Starting point
+
+Either of these starting points is accepted: 
+
+- A GitHub issue URL in any of the user's repositories. The issue title and description are the raw idea to refine.
+- A plain text description of an idea, feature, or problem the user wants to solve. 
+
 ## How It Works
 
 1.  **Understand & Expand (Divergent):** Restate the idea, ask sharpening questions, and generate variations.
 2.  **Evaluate & Converge:** Cluster ideas, stress-test them, and surface hidden assumptions.
 3.  **Sharpen & Ship:** Produce a concrete markdown one-pager moving work forward.
-4. **Publish Idea:** With user confirmation, create a GitHub issue in the `nicolasances/toto` repository.
+4. **Publish Idea:** With user confirmation, create a GitHub issue in the `nicolasances/toto` repository or, if the starting point was a GitHub issue, update that issue with the final markdown one-pager.
 
 ## Usage
 
@@ -20,17 +27,20 @@ This skill is primarily an interactive dialogue. Invoke it with an idea, and the
 
 **Trigger Phrases:**
 - "Help me refine this idea"
-- "Ideate on [concept]"
-- "Stress-test my plan"
+- "Help me refine this feature"
+- "Refine this idea [GitHub issue URL]"
 - "Brainstorm with me on [concept]"
 - "I have an idea for a feature"
 
 ## Output
 
-The final output is the creation (after user confirmation) of a GitHub issue in the `nicolasances/toto` repository, containing a markdown one-pager, that contains:
-- Problem Statement
+The final output is the creation (after user confirmation) of a GitHub issue in either the `nicolasances/toto` repository or, if the starting point was a GitHub issue, updating that issue with the final markdown one-pager, that contains:
+
+- Problem Statement 
+- Technical Context
 - Recommended Direction
 - Key Assumptions
+- Technical Implications
 - Scope
 - Not Doing list
 
@@ -111,7 +121,11 @@ Produce a concrete artifact — a GitHub issue with a markdown one-pager that mo
 # [Idea Name]
 
 ## Problem Statement
-[One-sentence "How Might We" framing]
+One-sentence "How Might We" framing
+
+## Technical Context
+- Relevant existing architecture and patterns
+- Impacted repositories
 
 ## Recommended Direction
 [The chosen direction and why — 2-3 paragraphs max]
@@ -121,8 +135,14 @@ Produce a concrete artifact — a GitHub issue with a markdown one-pager that mo
 - [ ] [Assumption 2 — how to test it]
 - [ ] [Assumption 3 — how to test it]
 
+## Technical Implications
+**For each repo**, add a description of the main changes to be made in the codebase. Follow these rules: 
+- Do not mention exact changes to the code
+- Remain on a logical level of abstraction above the code. For example, "Add a new API endpoint to fetch sentences with stats" is good, while "Add a new method `getSentencesWithStats` in `TomeLanguageAPI` that calls `GET /sentences/:language/with-stats`" is too detailed and should be avoided.
+- Reference existing patterns and architecture when possible, but do not assume the reader has read the code. For example, "Update the Sentences page to use infinite scroll and match the Vocabulary page pattern" is good, while "Refactor `SentencesPage` to match `VocabularyPage` with state for `sentences: SentenceWithStats[]`, `currentPage`, `totalCount`, `isLoading`, `isLoadingMore`, `error`" is too detailed and should be avoided.
+
 ## Scope
-[The minimum version that tests the core assumption. What's in, what's out.]
+The minimum version that tests the core assumption. What's in, what's out.
 
 ## Not Doing (and Why)
 - [Thing 1] — [reason]
@@ -133,10 +153,12 @@ Produce a concrete artifact — a GitHub issue with a markdown one-pager that mo
 
 **The "Not Doing" list is arguably the most valuable part.** Focus is about saying no to good ideas. Make the trade-offs explicit.
 
-Ask the user if they'd like to create a GitHub issue in the `nicolasances/toto` repository with this content (or a location of their choosing). Only create if they confirm.
-If you create the issue, include the final markdown in the issue body and title it with the idea name.
-When creating the issue, make sure to do the following: 
-- Use the GitHub API to create the issue in the `nicolasances/toto` repository.
+Ask the user if they'd like to create a GitHub issue in the `nicolasances/toto` repository with this content (or a location of their choosing) or update the current issue (if the starting point was an existing issue). **Only create if they confirm**.
+
+If you create or update the issue, include the final markdown in the issue body and title it with the idea name.
+
+When creating or updating the issue, make sure to do the following: 
+- Use the GitHub API to create or update the issue.
 - Assign the issue to the "Toto" project (`https://github.com/users/nicolasances/projects/5`).
 - Add the "idea" label to the issue.
 
