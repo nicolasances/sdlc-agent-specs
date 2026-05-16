@@ -160,7 +160,8 @@ If you create or update the issue, include the final markdown in the issue body 
 When creating or updating the issue, make sure to do the following: 
 - Use the GitHub API to create or update the issue.
 - Assign the issue to the "Toto" project (`https://github.com/users/nicolasances/projects/5`).
-- Add the "idea" label to the issue.
+- Add the `idea` label to the issue. This indicates that the issue is an idea, not yet broken down into tasks.
+- Add the `refined` label to the issue. This status label indicates that the idea has been through the ideation process and is ready for prioritization and implementation.
 
 ### Anti-patterns to Avoid
 
