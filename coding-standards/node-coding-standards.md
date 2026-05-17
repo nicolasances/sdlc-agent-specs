@@ -76,6 +76,16 @@ parseRequest(req: Request): AddSentenceAlternativeRequest {
     
     return { language, sentenceId: req.params.sentenceId, translation };
 }
+```
+
+## Coding Standards
+
+### Database integration 
+
+- Database integration **must** always happen in a **backend microservice**. 
+- Database integration **must** always happen in a "Store" class. E.g. `SentenceStore` will contain all the methods to read and write objects in the `sentence` collection.
+- When using MongoDB, no need to wrap `ObjectId` in a try-catch statement. It is ok that a runtime exception is thrown, if the rest of the service is well built (e.g. validation) this should never happen. So **do not do this**: `try { oid = new ObjectId(sentenceId); } catch { ... }`. Just do `new ObjectId(sentenceId)` instead and use it.
+
 
 ## Tests
 
