@@ -42,6 +42,37 @@ interface SomeFunctionInput {
 }
 ```
 
+### Space things out
+
+This is a personal preference. I like to read code **well spaced out**.
+This is what I typically like: 
+- Always put a empty line **before return statements**, unless the return statement is the only statement in an if, else clause. 
+- Cluster together input validation, but separate it visually from input extraction.
+
+An example: 
+
+```typescript 
+// I DON'T LIKE WHEN ALL CODE IS COMPACTED TOGETHER: 
+parseRequest(req: Request): AddSentenceAlternativeRequest {
+    const language = req.params.language;
+    if (!SUPPORTED_LANGUAGES.includes(language)) throw new ValidationError(400, `Unsupported language: ${language}`);
+    const translation = req.body?.translation;
+    if (!translation) throw new ValidationError(400, "translation is required");
+    return { language, sentenceId: req.params.sentenceId, translation };
+}
+
+// I PREFER THIS INSTEAD: 
+parseRequest(req: Request): AddSentenceAlternativeRequest {
+    
+    const language = req.params.language;
+    const translation = req.body?.translation;
+    
+    if (!SUPPORTED_LANGUAGES.includes(language)) throw new ValidationError(400, `Unsupported language: ${language}`);
+    if (!translation) throw new ValidationError(400, "translation is required");
+    
+    return { language, sentenceId: req.params.sentenceId, translation };
+}
+
 ## Tests
 
 - When writing unit tests **ALWAYS** use Mocha. 
