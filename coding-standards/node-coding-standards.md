@@ -46,9 +46,12 @@ interface SomeFunctionInput {
 
 This is a personal preference. I like to read code **well spaced out**.
 This is what I typically like: 
-- Always put a empty line **before return statements**, unless the return statement is the only statement in an if, else clause. 
+- Always put a empty line **before return statements**. 
 - Cluster together input validation, but separate it visually from input extraction.
 - There should be an empty line after the function header (declaration) and before the first line of code.
+- Async invocations should be clearly visible in the code. They should be isolated with an empty line before and after. 
+- Single lines within a block statement (or if .. else statement) should not have empty lines around. 
+- If statements should be separated from the rest of the code with empty lines before and after.
 
 An example: 
 
