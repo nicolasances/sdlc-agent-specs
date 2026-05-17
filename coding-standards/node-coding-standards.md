@@ -48,6 +48,7 @@ This is a personal preference. I like to read code **well spaced out**.
 This is what I typically like: 
 - Always put a empty line **before return statements**, unless the return statement is the only statement in an if, else clause. 
 - Cluster together input validation, but separate it visually from input extraction.
+- There should be an empty line after the function header (declaration) and before the first line of code.
 
 An example: 
 
