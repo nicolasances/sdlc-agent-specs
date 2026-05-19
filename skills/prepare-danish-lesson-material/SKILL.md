@@ -24,6 +24,7 @@ Starting from the notes taken during a Danish lesson, create a structured note o
 
 - If the translation of a word or a sentence is in the raw notes, use that translation. Otherwise, use your best guess based on the context of the lesson.
 - If there is ambiguity, **ask the user**. It is better to ask the user to disambiguate than to make a wrong assumption.
+- In general, avoid rules on "Definite form of nouns". These are trivial. 
 
 ## Output format
 
