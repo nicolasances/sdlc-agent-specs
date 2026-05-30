@@ -38,11 +38,14 @@ This skill is primarily an interactive dialogue. Invoke it with an idea, and the
 
 The final output is the creation (after user confirmation) of a Markdown file that documents the refined idea. The final markdown one-pager contains:
 
-- Purpose & Scope
+- Table of Contents
+- Purpose & Scope (What / Who / Problems / Out of scope)
 - Core Concepts
 - Features
 - Data Models 
+- Key User Stories
 - Constraints & Assumptions
+- Open Questions
 - Not Doing list
 - Ideas for future versions
 
@@ -119,52 +122,110 @@ After the user reacts to Phase 1 (indicates which ideas resonate, pushes back, a
 
 Produce a concrete artifact — a GitHub issue with a markdown one-pager that moves work forward:
 
-- Purpose & Scope
+- Table of Contents
+- Purpose & Scope (What / Who / Problems / Out of scope)
 - Core Concepts
 - Features
 - Data Models 
+- Key User Stories
 - Constraints & Assumptions
+- Open Questions
 - Not Doing list
 - Ideas for future versions
 
 ```markdown
 # [Idea Name]
 
-## Purpose & Scope
-- A description of the purpose behind this idea and its scope
-- One-sentence "How Might We" framing
-- An explanation of "What problem is this solving"
+## Table of Contents
 
-## Core Concepts
+1. [Purpose & Scope](#1-purpose--scope)
+2. [Core Concepts](#2-core-concepts)
+3. [Features](#3-features)
+4. [Data Models](#4-data-models)
+5. [Key User Stories](#5-key-user-stories)
+6. [Constraints & Assumptions](#6-constraints--assumptions)
+7. [Open Questions](#7-open-questions)
+8. [Not Doing (and Why)](#8-not-doing-and-why)
+9. [Ideas for Future Versions](#9-ideas-for-future-versions)
+
+---
+
+## 1. Purpose & Scope
+
+### 1.1 What is this?
+[A description of the idea and what it does]
+
+### 1.2 Who is it for?
+[The specific target user and their context]
+
+### 1.3 What problems does it solve?
+- [Problem 1]
+- [Problem 2]
+
+### 1.4 Out of scope (v1)
+- [Thing deliberately excluded]
+- [Thing deliberately excluded]
+
+---
+
+## 2. Core Concepts
 A table of core concepts (glossary of concepts) that this idea relies on. The table has 
 - a `term` column that states the name of the concept
 - a `definition` column that explains the concept
 
-## Features
+---
+
+## 3. Features
 [A list of core features that define this idea]
 
-### [Feature 1 Name]
+### 3.1 [Feature 1 Name]
 [Detailed description of the feature, how it should work, etc.]
 
-### [Feature 2 Name]
+### 3.2 [Feature 2 Name]
 [Detailed description of the feature, how it should work, etc.]
 
-## Data Models
+---
+
+## 4. Data Models
 [All the data models that are needed to better understand and stress test the idea]
 
-## Constraints and Assumptions
+---
+
+## 5. Key User Stories
+
+| # | As a user, I want to… | So that… |
+|---|---|---|
+| US-01 | [action] | [goal] |
+| US-02 | [action] | [goal] |
+
+---
+
+## 6. Constraints and Assumptions
 - [Assumption 1] - [Description and implications]
 - [Assumption 2] - [Description and implications]
 
 - [Constraint 1] - [Description and implications]
 - [Constraint 2] - [Description and implications]
 
-## Not Doing (and Why)
+---
+
+## 7. Open Questions
+
+| # | Question | Options / Notes |
+|---|---|---|
+| OQ-01 | [Question] | [Options or notes] |
+| OQ-02 | [Question] | [Options or notes] |
+
+---
+
+## 8. Not Doing (and Why)
 - [Thing 1] — [reason]
 - [Thing 2] — [reason]
 - [Thing 3] — [reason]
 
-## Ideas for future versions
+---
+
+## 9. Ideas for Future Versions
 - [Idea 1] - [description]
 - [Idea 2] - [description]
 
