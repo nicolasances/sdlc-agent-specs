@@ -11,15 +11,15 @@ Refines raw ideas into sharp, actionable concepts worth building through structu
 
 Either of these starting points is accepted: 
 
-- A GitHub issue URL in any of the user's repositories. The issue title and description are the raw idea to refine.
 - A plain text description of an idea, feature, or problem the user wants to solve. 
+- A document with the description of an idea, to be refined.
+- A GitHub issue URL in any of the user's repositories. The issue title and description are the raw idea to refine.
 
 ## How It Works
 
 1.  **Understand & Expand (Divergent):** Restate the idea, ask sharpening questions, and generate variations.
 2.  **Evaluate & Converge:** Cluster ideas, stress-test them, and surface hidden assumptions.
-3.  **Sharpen & Ship:** Produce a concrete markdown one-pager moving work forward.
-4. **Publish Idea:** With user confirmation, create a GitHub issue in the `nicolasances/toto` repository or, if the starting point was a GitHub issue, update that issue with the final markdown one-pager.
+3.  **Document Idea:** Produce a concrete markdown one-pager moving work forward. The user **must** tell you where to store the document.
 
 ## Usage
 
@@ -31,18 +31,20 @@ This skill is primarily an interactive dialogue. Invoke it with an idea, and the
 - "Refine this idea [GitHub issue URL]"
 - "Brainstorm with me on [concept]"
 - "I have an idea for a feature"
+- "Help me work on a concept"
+- "Let's continue working on [idea or concept]"
 
 ## Output
 
-The final output is the creation (after user confirmation) of a GitHub issue in either the `nicolasances/toto` repository or, if the starting point was a GitHub issue, updating that issue with the final markdown one-pager, that contains:
+The final output is the creation (after user confirmation) of a Markdown file that documents the refined idea. The final markdown one-pager contains:
 
-- Problem Statement 
-- Technical Context
-- Recommended Direction
-- Key Assumptions
-- Technical Implications
-- Scope
+- Purpose & Scope
+- Core Concepts
+- Features
+- Data Models 
+- Constraints & Assumptions
 - Not Doing list
+- Ideas for future versions
 
 ## Detailed Instructions
 
@@ -117,51 +119,61 @@ After the user reacts to Phase 1 (indicates which ideas resonate, pushes back, a
 
 Produce a concrete artifact — a GitHub issue with a markdown one-pager that moves work forward:
 
+- Purpose & Scope
+- Core Concepts
+- Features
+- Data Models 
+- Constraints & Assumptions
+- Not Doing list
+- Ideas for future versions
+
 ```markdown
 # [Idea Name]
 
-## Problem Statement
-One-sentence "How Might We" framing
+## Purpose & Scope
+- A description of the purpose behind this idea and its scope
+- One-sentence "How Might We" framing
+- An explanation of "What problem is this solving"
 
-## Technical Context
-- Relevant existing architecture and patterns
-- Impacted repositories
+## Core Concepts
+A table of core concepts (glossary of concepts) that this idea relies on. The table has 
+- a `term` column that states the name of the concept
+- a `definition` column that explains the concept
 
-## Recommended Direction
-[The chosen direction and why — 2-3 paragraphs max]
+## Features
+[A list of core features that define this idea]
 
-## Key Assumptions to Validate
-- [ ] [Assumption 1 — how to test it]
-- [ ] [Assumption 2 — how to test it]
-- [ ] [Assumption 3 — how to test it]
+### [Feature 1 Name]
+[Detailed description of the feature, how it should work, etc.]
 
-## Technical Implications
-**For each repo**, add a description of the main changes to be made in the codebase. Follow these rules: 
-- Do not mention exact changes to the code
-- Remain on a logical level of abstraction above the code. For example, "Add a new API endpoint to fetch sentences with stats" is good, while "Add a new method `getSentencesWithStats` in `TomeLanguageAPI` that calls `GET /sentences/:language/with-stats`" is too detailed and should be avoided.
-- Reference existing patterns and architecture when possible, but do not assume the reader has read the code. For example, "Update the Sentences page to use infinite scroll and match the Vocabulary page pattern" is good, while "Refactor `SentencesPage` to match `VocabularyPage` with state for `sentences: SentenceWithStats[]`, `currentPage`, `totalCount`, `isLoading`, `isLoadingMore`, `error`" is too detailed and should be avoided.
+### [Feature 2 Name]
+[Detailed description of the feature, how it should work, etc.]
 
-## Scope
-The minimum version that tests the core assumption. What's in, what's out.
+## Data Models
+[All the data models that are needed to better understand and stress test the idea]
+
+## Constraints and Assumptions
+- [Assumption 1] - [Description and implications]
+- [Assumption 2] - [Description and implications]
+
+- [Constraint 1] - [Description and implications]
+- [Constraint 2] - [Description and implications]
 
 ## Not Doing (and Why)
 - [Thing 1] — [reason]
 - [Thing 2] — [reason]
 - [Thing 3] — [reason]
 
+## Ideas for future versions
+- [Idea 1] - [description]
+- [Idea 2] - [description]
+
 ```
 
 **The "Not Doing" list is arguably the most valuable part.** Focus is about saying no to good ideas. Make the trade-offs explicit.
 
-Ask the user if they'd like to create a GitHub issue in the `nicolasances/toto` repository with this content (or a location of their choosing) or update the current issue (if the starting point was an existing issue). **Only create if they confirm**.
+Ask the user where to store the created document (path) or update the current document (if the starting point was an existing document). **Only create if they confirm**.
 
-If you create or update the issue, include the final markdown in the issue body and title it with the idea name.
-
-When creating or updating the issue, make sure to do the following: 
-- Use the GitHub API to create or update the issue.
-- Assign the issue to the "Toto" project (`https://github.com/users/nicolasances/projects/5`).
-- Add the `idea` label to the issue. This indicates that the issue is an idea, not yet broken down into tasks.
-- Add the `refined` label to the issue. This status label indicates that the idea has been through the ideation process and is ready for prioritization and implementation.
 
 ### Anti-patterns to Avoid
 
@@ -177,7 +189,6 @@ When creating or updating the issue, make sure to do the following:
 
 Direct, thoughtful, slightly provocative. You're a sharp thinking partner, not a facilitator reading from a script. Channel the energy of "that's interesting, but what if..." -- always pushing one step further without being exhausting.
 
-Read `examples.md` in this skill directory for examples of what great ideation sessions look like.
 
 ## Red Flags
 
@@ -198,5 +209,5 @@ After completing an ideation session:
 - [ ] Multiple directions were explored, not just the first idea
 - [ ] Hidden assumptions are explicitly listed with validation strategies
 - [ ] A "Not Doing" list makes trade-offs explicit
-- [ ] The output is a concrete artifact (GitHub issue with markdown one-pager), not just conversation
+- [ ] The output is a concrete artifact (markdown one-pager), not just conversation
 - [ ] The user confirmed the final direction before any implementation work
