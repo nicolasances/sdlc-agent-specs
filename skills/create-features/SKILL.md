@@ -76,22 +76,40 @@ A table of core concepts (glossary of concepts) that this idea relies on. The ta
 
 ### 2.2. Requirements
 
-### Requirement: [name]
-[Description of the requirement to be implemented]
-- Interfaces
-- Endpoints or changes to endpoints. Endpoints, if any, should show the **REST endpoint** (e.g. `GET /vocabularyItems`, `PUT /vocabularyItems/:id`)
-- Data models or changes to data models. If a data model is defined, show it as a table (4 columns: field name, field type, description, rules - if any)
-- Business Logic or changes to business logic
-- Database collections. If any, it should define the collection name only.
+#### 2.2.1. Data Models
+*(Omit this section if the feature introduces no new data model and modifies no existing one)*
+
+For each data model, state the **collection name** and describe it as a table (4 columns: field name, field type, description, rules — if any).
+
+#### 2.2.2. Endpoints
+*(Microservices only — omit for frontend features)*
+
+List each REST endpoint introduced or modified by this feature. Show the full **REST endpoint** (e.g. `GET /vocabularyItems`, `PUT /vocabularyItems/:id`) with a short description of its behavior, accepted inputs, and any rejection rules.
+
+#### 2.2.3. Interfaces
+*(Frontend only — omit for microservice features)*
+
+Describe the screens, components, or interactions this feature introduces or modifies.
+
+#### 2.2.4. Business Logic
+*(Omit only if there is truly no logic beyond CRUD)*
+
+Describe the rules, flows, algorithms, and invariants that govern this feature's behavior — things that live in the service layer, not in the schema or the route signature. Use one bullet per rule; be specific enough that a developer can implement it without guessing.
 
 ---
 
-## 3. Key User Stories
+## 3. Key Consumer Stories
 
-| # | As a user, I want to… | So that… |
+The **consumer** is whoever calls this component:
+- For a **microservice**: another service, a frontend app, or an external script calling the API.
+- For a **frontend app**: the end user interacting with the UI.
+
+Frame stories from the consumer's perspective, naming the operation or capability they need, not the end-user product experience.
+
+| # | As a Consumer, I want to… | So that… |
 |---|---|---|
-| US-01 | [action] | [goal] |
-| US-02 | [action] | [goal] |
+| CS-01 | [API operation or capability] | [what it enables] |
+| CS-02 | [API operation or capability] | [what it enables] |
 
 ---
 
@@ -123,5 +141,7 @@ If it does not exist, create it.
 - Starting anything without a clear, refined idea documented in a markdown file
 - Writing any code
 - Adding code snippets into the feature description
+- Business logic buried inside a data model or endpoint description instead of in §2.2.4
+- End-user product goals written as consumer stories for a microservice feature
 - A feature that defines multiple endpoints: it can probably be broken down
-- A feature that defines multiple data amodels: it can probably be broken down
+- A feature that defines multiple data models: it can probably be broken down
