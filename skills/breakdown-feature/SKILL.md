@@ -55,7 +55,7 @@ Ask the user to confirm that your understanding is correct before proceeding to 
 
 You must follow these steps: 
 
-1. Break down the proposed idea into a clear, structured list of subfeatures (tasks) that will be then used by a coding agent. 
+1. Break down the proposed idea into a clear, structured list of subfeatures (tasks) that will be then used by a coding agent. You **must** use the `slicing-strategies.md` file to decide how to breakdown the feature into tasks.
 2. Each task (subfeature) must be stored in a markdown file. 
 3. Plan tasks. Once you have a comprehensive list of changes, organize them into a coherent implementation plan. Identify dependencies (what needs to be built before what) and group related changes together.
 4. Once that is done **ask the user to review the plan and tasks**. **Do not proceed** to the next phase until you have an explicit confirmation from the user that the plan looks good. This is a critical checkpoint to ensure alignment before any code gets written.
