@@ -112,6 +112,11 @@ A table of core concepts (glossary of concepts) that this idea relies on. The ta
 
 ```
 
+### Where to store the features
+
+Features need to be stored as markdown files in this codebase's `docs/features` folder. 
+If it does not exist, create it.
+
 ## Red Flags
 
 - Starting anything without a clear, refined idea documented in a markdown file
