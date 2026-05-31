@@ -78,6 +78,29 @@ parseRequest(req: Request): AddSentenceAlternativeRequest {
 }
 ```
 
+### Comments
+
+- Comment all methods.
+
+Example of comments
+```typescript
+    /**
+     * [Description of what the function does]
+     * [Any special rules worth documenting (business logic)]:
+     * - [Rule 1]
+     * - [Rule 2]
+     * 
+     * @param challenge the challenge to upsert
+     * 
+     * @return [returned data]
+     */
+    async saveChallenge(challenge: TomeChallenge): Promise<void> {
+        // ...
+    }
+```
+
+---
+
 ## Coding Standards
 
 ### Database integration 
