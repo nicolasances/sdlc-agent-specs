@@ -11,18 +11,24 @@ Starting from a refined idea clearly documented in a markdown file, break down t
 
 This skill is used to take a well-described, refined idea (that might span across multiple components and services in an architecture) and **for a specific component of the architecture** break the idea down into **self-contained, independently deployable and testable** features for this component (whether it's a microservice, an app, or any other type of software-based component of the architecture).
 
+This skill can also be used to update an existing feature markdown file pre-implementation. 
+
 ## When to Use
 
 - To breakdown an idea or concept that is clearly defined in a markdown file into a series of features that needs to be implemented in a specific codebase (microservice or app or other components of an architecture)
+- To **update** features described in a markdown file.
 
 **Trigger Phrases:**
 - "Help me break this down the idea described in [path] into a series of features for this microservice"
 - "Help me break this down the idea described in [path] into a series of features for this app"
 - "I need to break down an idea into features for this service"
+- "I need you to update feature [path]"
+- "Update this feature description [path] .."
 
 **When NOT to use:** 
 - Ideation or refinement of an idea
 - Implementation of changes in code
+- Feature implementation
 
 --- 
 
