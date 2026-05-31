@@ -79,9 +79,10 @@ A table of core concepts (glossary of concepts) that this idea relies on. The ta
 ### Requirement: [name]
 [Description of the requirement to be implemented]
 - Interfaces
-- Endpoints or changes to endpoints
+- Endpoints or changes to endpoints. Endpoints, if any, should show the **REST endpoint** (e.g. `GET /vocabularyItems`, `PUT /vocabularyItems/:id`)
 - Data models or changes to data models. If a data model is defined, show it as a table (4 columns: field name, field type, description, rules - if any)
 - Business Logic or changes to business logic
+- Database collections. If any, it should define the collection name only.
 
 ---
 
