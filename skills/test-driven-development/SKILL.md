@@ -24,6 +24,9 @@ Write a failing test before writing the code that makes it pass. For bug fixes, 
 - Pure-UI changes that can be verified visually without ambiguity 
 - If a test requires a mock browser or a real browser environment
 
+**Tests you should NEVER write:**
+- Tests that require you to have access to a database instance. Avoid those. 
+
 ## The TDD Cycle
 
 ```
