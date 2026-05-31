@@ -33,6 +33,7 @@ The preparation workflow follows these steps:
 3. Read the feature description
 4. Breakdown the feature into a list of tasks (subfeatures). For this you **must use** the `breakdown-feature` skill.
 5. Create a feature branch. 
+6. Commit all the task markdown files if the user has approved the plan.
 
 **Rules for creating the GitHub issue**: 
 - [ ] It **must** be in the repo connected to the codebase where the feature will be implemented. 
@@ -103,3 +104,7 @@ You follow this workflow:
 
 **Expected Output:**
 The PR you have created.
+
+## Red Flags
+Any of these behaviour or sentences are a **BIG** problem and mean that something is going wrong. Stop and rethinking what you should be doing. 
+- Please proceed with the full implementation as planned. Do not wait for confirmation — implement all files now
