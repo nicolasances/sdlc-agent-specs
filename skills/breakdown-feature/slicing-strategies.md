@@ -1,33 +1,42 @@
-## Slicing Strategies for Feature Breakdown
+# Slicing Strategy for Feature Breakdown
 
-### Vertical Slices (Preferred)
+When breaking down a feature into tasks (subfeatures), you **MUST** use the **Vertical Slices Strategy**. 
 
-Build one complete path through the stack:
+### Vertical Slices Strategy for Microservices (backend)
 
-```
-Slice 1: Create a task (DB + API + basic UI)
-    → Tests pass, user can create a task via the UI
+When working with backend Microservices, you will split the feature into **vertical slices** that span from the API endpoint, down to the delegate implementation and down to the DB integration. 
+Each slice delivers working **end-to-end** functionality.
 
-Slice 2: List tasks (query + API + UI)
-    → Tests pass, user can see their tasks
+**A good task split (vertical slices) looks like this**: 
+- Tasl 1: 
+    - Common functions to all tasks 
+    - Empty Store class (remember: Store classes are classes, in my coding standard, dedicated to integrate to DBs) - *E.g. `CustomerStore`*
+- Task 2 - *E.g. Implement POST /customer* 
+    - API Endpoint definition and registration 
+    - Delegate implementation 
+    - Business Logic (eventually using common functions built on Task 1)
+    - Database integration (Store method - *e.g. CustomerStore.saveCustomer()*)
+- Task 3 - *E.g. Implement GET /customers*
+    - API Endpoint definition and registration 
+    - Delegate implementation 
+    - Business Logic (eventually using common functions built on Task 1)
+    - Database integration (Store method - *e.g. CustomerStore.listCustomers()*))
 
-Slice 3: Edit a task (update + API + UI)
-    → Tests pass, user can modify tasks
+**A BAD task split (horizontal slices) looks like this:**
+- Task 1: 
+    - All database integrations, queries, methods (Store calss + all methods)
+- Task 2: 
+    - All Business Logic 
+- Task 3: 
+    - All Delegate implementations
+- Task 4: 
+    - All API Endpoints definition and their registration
 
-Slice 4: Delete a task (delete + API + UI + confirmation)
-    → Tests pass, full CRUD complete
-```
 
-Each slice delivers working end-to-end functionality.
+### Vertical Slices Strategy for Frontend
 
-### Contract-First Slicing
-
-When backend and frontend need to develop in parallel:
-
-```
-Slice 0: Define the API contract (types, interfaces, OpenAPI spec)
-Slice 1a: Implement backend against the contract + API tests
-Slice 1b: Implement frontend against mock data matching the contract
-Slice 2: Integrate and test end-to-end
-```
-
+For frontends, the logic is the same. 
+A good slice (task) will include: 
+- UI
+- Presentation logic
+- API integration
