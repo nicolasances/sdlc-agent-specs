@@ -96,7 +96,7 @@ You follow this workflow:
 1. Build the project 
 2. Run the tests. If tests fail, understand the problem and go back to Phase 2. 
 3. Clean up task files and update feature documentation (see below). **Commit and push** after that. 
-4. Update the Feature markdown file with an "Implemented" badge: `![Status](https://img.shields.io/badge/status-implemented-brightgreen?style=flat-square)`
+4. Update the Feature markdown file with an "Implemented" badge: `![Status](https://img.shields.io/badge/status-implemented-brightgreen?style=flat-square)`. This is **IMPORTANT**. 
 5. Open a Pull Request. **Always** open a PR when you are done.
 6. Link the Github issue to the PR 
 
@@ -112,10 +112,11 @@ What to keep and where:
 **Checklist for completion:**
 - [ ] The project builds
 - [ ] The project's tests all pass
-- [ ] Feature markfown files are updated with resolved open questions and non-obvious API/domain decisions
+- [ ] Feature markdown files are updated with resolved open questions and non-obvious API/domain decisions
 - [ ] All Task markdown files have been deleted
 - [ ] A PR has been open 
 - [ ] The GitHub issue has been linked to the PR so that when the PR is merged by the user, the issue automatically closes
+- [ ] The Feature markdown file has been updated with the "Implemented" badge
 
 **Expected Output:**
 The PR you have created.
