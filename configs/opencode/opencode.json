@@ -1,0 +1,37 @@
+{
+        "$schema": "https://opencode.ai/config.json",
+        "provider": {
+                "amazon-bedrock": {
+                        "options": {
+                                "region": "eu-north-1",
+                                "profile": "nimat"
+                        },
+                        "models": {
+                                "eu.anthropic.claude-opus-4-8": {
+                                        "options": {
+                                                "thinking": {
+                                                        "type": "enabled",
+                                                        "budgetTokens": 16000
+                                                }
+                                        }
+                                },
+                                "eu.anthropic.claude-opus-4-5-20251101-v1:0": {
+                                        "options": {
+                                                "thinking": {
+                                                        "type": "enabled",
+                                                        "budgetTokens": 128000
+                                                }
+                                        }
+                                },
+                                "eu.anthropic.claude-sonnet-4-6": {
+                                        "options": {
+                                                "thinking": {
+                                                        "type": "enabled",
+                                                        "budgetTokens": 128000
+                                                }
+                                        }
+                                }
+                        }
+                }
+        }
+}
