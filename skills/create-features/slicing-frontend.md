@@ -2,74 +2,193 @@
 
 ## Guiding Principle
 
-The guiding principles for slicing an idea into Features for a frontend follows the MVP philosophy: each Feature should deliver a complete, end-to-end user experience, even if it's minimal.
+**For a frontend, a Feature is a Capability — a coherent, independently-valuable slice of user functionality, delivered end-to-end.**
+
+A capability owns **one or more screens** and everything that makes them work: the screen UI, the React components inside it, the presentation logic, the business/client logic, and the API integration. A user can do the whole job the capability exists for — nothing about it is left to another feature.
+
+A capability is **usually** one screen, but not always:
+- One screen that does one job → one capability (e.g. a dashboard, a settings screen, a search-results screen).
+- A tight flow of screens that together deliver one uninterrupted job → **one** capability (e.g. a checkout flow: cart → address → payment → confirmation; or an onboarding wizard).
+- A cross-cutting component reused across many screens → its own capability (e.g. a media player, a rich-text editor, a date picker used throughout the app).
+
+**Screens are not the unit of slicing — they are the scaffold.** You enumerate every screen to *bound* capabilities and to *prove coverage*, but the feature is the capability, not the screen.
+
+## Core Vocabulary (read this before slicing)
+
+These words are not interchangeable. Most bad breakdowns come from confusing them — usually by mistaking a **component** for a feature, or a **screen** for a capability.
+
+| Term | What it is | Is it a Feature? |
+|------|------------|------------------|
+| **Capability** | A coherent slice of user value, owning 1..n screens, delivered end-to-end. | **Yes — the capability is the Feature.** |
+| **Feature** | One capability, written up in one feature file. It *contains* screens and components. | — |
+| **Screen** | A page/route the user navigates to. Belongs to exactly one capability. Used to bound capabilities and prove coverage. | No — a screen is *part of* a capability. |
+| **Component** | A React element inside a screen (a card, chart, rail, banner, button row). | **No.** Described *inside* the feature whose screen contains it. |
+
+**Two rules that prevent the common failures:**
+
+1. **A Component is never a Feature.** A card, a chart, a row, a banner, a "shell" is part of the screen it lives in. The one exception: a **cross-cutting shared component used by three or more screens** (e.g. a media player or a date picker used throughout the app) becomes its own capability/feature so its contract is defined once; the screens that use it reference it. A component used by only one or two screens stays inside its owning feature.
+
+2. **Don't split a coherent flow into one-feature-per-screen, and don't bundle unrelated screens.** Group screens into a capability when they form one uninterrupted job; keep them separate when each does an independent job. (Floor and ceiling — see Altitude self-check.)
 
 ## Methodology
 
-To slice an idea into Features for the frontend, follow these steps:
+Follow these steps in order. Do not jump straight to writing feature files.
 
-1. **Understand the User Journey**: Take the idea and map out the user journey. Identify the key interactions and touchpoints that the user will have with the product.
-2. **Identify the Main Screens**: Based on the user journey, identify the main screens or components that will be involved. Each screen or component can potentially be a separate Feature. 
-    - If screens have been defined in a design tool and are available in a wireframe or prototype, use those as a reference. 
-    - Check the documentation for any existing screens or components that have been defined, and see if they align with the user journey.
-3. **Define the Features**: For each main screen or component, define a Feature that delivers a complete user experience for that screen. This means that the Feature should include all necessary interactions, presentation logic, data fetching, and state management to make the screen functional. 
+### Step 1 — Map the User Journeys
 
-**Example of a good Feature for frontend:**
-- In a User Profile screen, a Feature could be "Display User Information". This Feature would include fetching the user's data from the API, handling loading and error states, and rendering the user's name, profile picture, and other relevant information.
-- In a Dashboard screen, a Feature could be "Show Recent Activity". This Feature would involve fetching the user's recent activity data, handling loading and error states, and rendering a list of recent actions or notifications.
+From the idea (and the wireframe/design, if one exists), list the **journeys**: the end-to-end paths a user takes to accomplish a goal (e.g. "Sign up and set up an account", "Find a product and buy it"). For each journey, write the ordered sequence of **screens** it passes through.
+
+Write these to **`docs/features/00-user-journeys.md`** (see Output Format). This file is the backbone of the breakdown and the basis for the coverage check.
+
+### Step 2 — Build the Screen Inventory (the scaffold)
+
+From the journeys, the design, and the idea, enumerate the **complete set of screens** for this codebase — every page the user can land on. If the design documentation already lists pages or a navigation map (e.g. a `ui-design.md`, or a wireframe with named screens), that inventory is the **source of truth** — reconcile against it, mofify it if needed to accomodate changes in the requirements (idea) or new ideas, do not invent a different decomposition.
+
+The inventory must be **complete**: every screen reachable in any journey appears in it. This is the main guard against the most common failure — covering only the first screen of a multi-screen experience.
+
+**When the wireframe only partially covers the idea:** the wireframe is the source of truth for the screens it defines. Do **not** silently invent screens for idea scope the wireframe does not cover — by default skip those parts and list them, or ask the user whether to design them without wireframe guidance. See *Handling a partial or missing wireframe* in `SKILL.md`.
+
+### Step 3 — Group screens into Capabilities → one Feature each
+
+Group the screens into capabilities along **lines of user value and flow**:
+
+- A screen that does an **independent job** is its own capability.
+- Screens that form **one uninterrupted job** (the user moves through them without it being a separate decision/destination) are **one** capability. Example: a checkout flow that moves the user cart → address → payment → confirmation is *one* feature, even though the design lists those as separate pages.
+- Use the journeys to find the natural seams: a seam where the user pauses, chooses a different destination, or could reasonably stop, is a capability boundary.
+
+Each capability becomes **one Feature file**, owning its screen(s) end-to-end. Inside it, list each screen and the **components** that make up that screen. Components are parts of the feature — never spun out into their own files.
+
+> Granularity note: features here are **capability-sized, not implementation-sized**. A feature is later broken into tasks by the downstream breakdown step, which handles implementation chunking. So prefer a coherent capability over many tiny per-screen features.
+
+### Step 4 — Pull out cross-cutting shared components
+
+If a component is used by **three or more** screens, give it its own Feature so its behaviour and contract are defined once; every screen that uses it references it. Do this only for genuinely cross-cutting components; one- or two-screen components stay inside their owning feature.
+
+### Step 5 — Coverage check (mandatory before finishing)
+
+Verify, explicitly:
+- **Every screen** in the inventory (Step 2) is owned by **exactly one** Feature.
+- **Every journey** in `00-user-journeys.md` can be traversed end-to-end across the Features — no journey passes through a screen that no feature owns.
+- **No Feature is a sub-region of a screen** (a header, a card, a chart, a "shell"). If one is, it is a component — fold it into its screen's feature.
+- **No Feature bundles unrelated screens** just because they are adjacent in the nav. If two screens are independent jobs with a clear seam between them, split them.
+
+If a journey cannot be completed with the features you produced, the breakdown is incomplete — add the missing capability.
+
+## Altitude self-check
+
+Check granularity against these before accepting the breakdown.
+
+**Right altitude (capability-level, end-to-end):**
+- A *dashboard* screen — the whole hub; its summary cards, charts and action rows are **components inside this one feature**, together with the data load that feeds them.
+- A *list/search* screen — listing items with their status and navigation into a detail screen.
+- A *checkout flow* — cart → address → payment → confirmation as **one** feature spanning several screens, because it is one uninterrupted job.
+- A *media player* — a cross-cutting shared component used by several screens, as its own feature.
+
+**Too small — component-level (do NOT do this):**
+- ❌ A dashboard's individual widgets (a *stats card*, a *chart*, an *activity feed*, an *actions row*) as separate features. These are **components of the dashboard screen**; they belong inside the dashboard feature.
+- ❌ A *page shell / layout* feature whose job is "lay out the other features". A screen and its parts are one feature; there is no separate shell.
+
+**Too big — incoherent bundle (also avoid):**
+- ❌ A single feature lumping the dashboard, the search screen, and the checkout flow together. These are distinct jobs with clear seams (the user stops at the dashboard, then chooses to search, then decides to check out). Split them.
+
+Rule of thumb: if the feature's Purpose is "render one card / chart / row / zone", it is too small (a component). If it spans screens the user reaches as separate, deliberate destinations, it is too big (split at the seam). The sweet spot is **one coherent job the user sets out to do.**
 
 ## Output Format
-Each Feature for a frontend should be documented in a markdown file (.md) with the following format:
+
+### `00-user-journeys.md`
 
 ```markdown
-# [Feature Name]
+# User Journeys
+
+[Short intro: this file maps the journeys through the section, the complete
+screen inventory, and the navigation map. It is the backbone for the feature
+breakdown and the coverage check.]
+
+## Journeys
+
+| # | Journey | Goal | Screen sequence |
+|---|---------|------|-----------------|
+| J1 | [name] | [what the user achieves] | [Screen A] → [Screen B] → [Screen C] |
+
+## Screen Inventory
+
+[Every screen, mapped to the capability/feature that owns it. This table must be
+complete — every screen any journey touches.]
+
+| Screen | Route (if known) | Owning Feature (capability) | Notes |
+|--------|------------------|-----------------------------|-------|
+
+## Cross-cutting shared components
+
+[Components used by 3+ screens that are their own feature, with the screens that use them.]
+
+| Shared component | Used by screens | Owning Feature |
+|------------------|-----------------|----------------|
+
+
+```
+
+### Feature file
+
+Each Feature is documented in its own markdown file (.md) in `docs/features`, named `NN-capability-name.md`.
+
+```markdown
+# [Feature Name — the capability this feature delivers]
 
 ## 1. Purpose & Scope
-[A description of the feature, why it's needed and what it does]
+[What capability this feature delivers and why. State the screen(s) it owns and
+that it delivers them end-to-end. Name the journey(s) from 00-user-journeys.md
+this capability participates in.]
 
-**Out of scope**: 
-- [Thing deliberately excluded]
+**Out of scope**:
+- [Thing deliberately excluded — typically other capabilities it navigates to]
 - [Thing deliberately excluded]
 
 ## 2. Key User Stories
-[Frame user stories from the end user's perspective, naming the operation or capability they need, not the technical implementation. Use the format: "As a [type of user], I want to [perform some action] so that [achieve some goal]."]
+[From the end user's perspective. "As a [user], I want to [action] so that [goal]."]
 
 | # | As a User I want to .. | so that .. |
 |---|------------------------|------------|
 
 ## 3. Interfaces
-[Describe the screens, components, or interactions this feature belongs to, introduces, or modifies. Include any relevant design references, such as references to wireframes or prototypes. Explain how the feature fits into the overall user experience and how it interacts with other features or components. Describe how it fits into the specific screens or components defined in the design documentation, if applicable.]
+[Describe the screen(s) this capability owns, their design reference
+(wireframe/prototype), and how they fit the navigation. For each screen, list the
+components it is composed of — these are parts of this feature, not separate
+features. If the capability owns several screens, group the components by screen.]
 
-**Screen:** [Name of the screen this feature belongs to, as defined in the design documentation]
+**Screen(s):** [Name(s) of the screen(s) this capability owns, per the design docs]
 
-**Components:** [List of components this feature belongs to, as defined in the design documentation]
+**Components:**
 
-| Component Name | Description | Expected Behavior |
-|----------------|-------------|-------------------|
+| Screen | Component Name | Description | Expected Behavior |
+|--------|----------------|-------------|-------------------|
 
-**Additional Notes:** [Any additional notes about the interfaces, such as edge cases, error states, or interactions with other features or components.]
+[If a screen uses a cross-cutting shared component owned by another feature,
+reference that feature here rather than re-describing the component.]
+
+**Additional Notes:** [Edge cases, error/empty/loading states, transitions between this capability's screens, and interactions with other features.]
 
 ## 4. Business Logic
-[Describe the rules, flows, algorithms, and invariants that govern this feature's behavior. This includes any client-side logic that is necessary to support the user interactions and interfaces described above. Use one bullet per rule; be specific enough that a developer can implement it without guessing.]
+[Rules, flows, algorithms, invariants, and client-side logic for this capability.
+One bullet per rule; specific enough to implement without guessing.]
 
 ## 5. Technical Decisions
-[Surface any technical or architectural decision that you are making in the design of this feature, especially if it deviates from standard practices or if there are multiple viable approaches that are significantly different from each other.]
+[Architectural decisions for this capability, especially deviations or forks.]
 
 | # | Decision | Rationale |
 |---|----------|-----------|
 
 ## 6. Success Criteria
-[Define clear success criteria for this feature, which can be used to determine when the implementation is complete and meets the requirements. This could include specific user interactions that must work, performance benchmarks, or any other measurable outcomes that indicate the feature is functioning as intended.]
+[Measurable criteria for "this capability is done and correct".]
 
 | # | Criterion | Notes |
 |---|-----------|-------|
 
 ## 7. Open Questions
-[Surface any open questions that you have about the design of this feature, especially if they impact the user experience or the technical implementation. These could be questions about edge cases, error handling, performance considerations, or anything else that is not yet fully defined.]
+[Unresolved questions affecting UX or implementation.]
 
 | # | Question | Notes |
 |---|----------|-------|
-
 ```
 
 ---

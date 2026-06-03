@@ -63,15 +63,21 @@ export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
 
 ## Design System Adherence
 
-Always use **tailwind** classes.
+- Always use **tailwind** classes.
 
 ### Toto React
-Make sure to use the `toto-react` library whenever possible. 
-First check what the toto-react library provides before implementing from scratch UI components. 
+
+- Make sure to use the `toto-react` library whenever possible. 
+- First check what the toto-react library provides before implementing from scratch UI components. 
+
+### Wireframe and design system
+
+- If a wireframe or design system exist for the interfaces use it. 
+- If you cannot easily find a wireframe or design system, **ask the user about it**.
 
 ### Avoid the AI Aesthetic
 
-AI-generated UI has recognizable patterns. Avoid all of them:
+AI-generated UI has recognizable patterns. **AVOID all of them**:
 
 | AI Default | Why It Is a Problem | Production Quality |
 |---|---|---|
@@ -88,7 +94,6 @@ AI-generated UI has recognizable patterns. Avoid all of them:
 
 - Use semantic color tokens: `text-primary`, `bg-surface`, `border-default` — not raw hex values
 - Ensure sufficient contrast (4.5:1 for normal text, 3:1 for large text)
-- Don't rely solely on color to convey information (use icons, text, or patterns too)
 
 ## Loading and Transitions
 

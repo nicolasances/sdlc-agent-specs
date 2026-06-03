@@ -31,24 +31,40 @@ The preparation workflow follows these steps:
 1. Create a GitHub issue to implement this feature
 2. Read the codebase to understand current state
 3. Read the feature description
-4. Breakdown the feature into a list of tasks (subfeatures). For this you **must use** the `breakdown-feature` skill.
-5. Create a feature branch. 
-6. Commit all the task markdown files if the user has approved the plan.
+4. **Determine whether this is a new feature or a change to an already-implemented one.** Signals that it is a *change*: the feature file carries an "Implemented" badge, and/or a **change record** exists under `docs/features/changes/` referencing this feature, and/or the feature file has relevant history in `git log`.
+    - **If it is a change**: read the **change record** and the **git diff** of the feature file(s) — together these are your delta. Scope your task list to that delta only (**add / modify / remove**), and do impact analysis on the codebase for exactly the changed requirements. **Do not re-implement the parts of the feature the change did not touch.**
+    - **If it is a new feature**: break down the full feature.
+5. Breakdown the feature (or the change delta) into a series of changes you will need to implement. **Prepare a task list**. 
+6. Create a feature branch. 
+7. Ask the user for confirmation of the task list before proceeding. 
+
+When preparing the task list, **always ask the user** for any non-trivial architectural or technical decision and when there are multiple options that are substantially different from each other.
 
 **Rules for creating the GitHub issue**: 
 - [ ] It **must** be in the repo connected to the codebase where the feature will be implemented. 
-- [ ] It **must** be labeled with the label `feature`
-- [ ] It **must** be associated with the GitHub project "Toto": https://github.com/users/nicolasances/projects/5
+- [ ] It must refer to the Feature .md file. 
+- [ ] If this is a **change** to an already-implemented feature, it must also refer to the **change record** file.
+- [ ] It **must** be labeled with the label `feature`.
+
+**Rules for breaking down the feature into tasks:**
+For a frontend feature: 
+- Building a UI Component should be considered a task. 
+- Apply vertical slices when slicing a feature. 
+    - **GOOD**: A task that covers UI component + presentation logic + API integration. 
+    - **BAD (avoid)** Avoid horizontal slices (task1: all UI, task 2: all API integrations, etc.)
+
+For a changed (already-implemented) feature:
+- Scope tasks to the delta from the change record + the feature file's git diff: **add / modify / remove**.
+- **Include removal tasks** for behavior the change drops — these are the ones most easily missed when working from an end-state spec.
+- Do **not** create tasks that rebuild parts of the feature the change did not touch.
 
 **Rules for creating the feature branch**: 
 - [ ] The feature branch must be named `feature/<feature-name>` where <feature-name> is a short name (dash-separated-words) of the feature.
 
-**Note**: Task files (T## markdown files) are temporary scaffolding. They guide implementation and are deleted after the feature ships. The canonical long-lived documentation is always the F## feature files.
-
 **This step is completed if**: 
 - [ ] The GitHub issue has been created
 - [ ] The feature branch has been created
-- [ ] You have broken down the feature into more granular tasks using the `breakdown-feature` skill.
+- [ ] You have broken down the feature into a series of tasks and **the user has confirmed it**. 
 
 ---
 
@@ -56,7 +72,7 @@ The preparation workflow follows these steps:
 
 You follow this workflow: 
 
-1. Read the list of broken-down features created in the previous phase. 
+1. Read the task list in the previous phase. 
 2. Take one task at a time, starting from those that depend on no other tasks and proceeding according to dependencies. 
     2.1. Implement the task
         - If the task is related to building (or changing) a frontend (UI) component, use the `frontend-development` skill. You **must** use this skill. 
@@ -124,3 +140,5 @@ The PR you have created.
 ## Red Flags
 Any of these behaviour or sentences are a **BIG** problem and mean that something is going wrong. Stop and rethinking what you should be doing. 
 - Please proceed with the full implementation as planned. Do not wait for confirmation — implement all files now
+- You are re-implementing a whole feature from its spec when a change record indicated only a delta needed to be applied.
+- You applied the additions and modifications from a change record but **skipped the removals**.
