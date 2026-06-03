@@ -34,6 +34,9 @@ Each Feature for a frontend should be documented in a markdown file (.md) with t
 ## 2. Key User Stories
 [Frame user stories from the end user's perspective, naming the operation or capability they need, not the technical implementation. Use the format: "As a [type of user], I want to [perform some action] so that [achieve some goal]."]
 
+| # | As a User I want to .. | so that .. |
+|---|------------------------|------------|
+
 ## 3. Interfaces
 [Describe the screens, components, or interactions this feature belongs to, introduces, or modifies. Include any relevant design references, such as references to wireframes or prototypes. Explain how the feature fits into the overall user experience and how it interacts with other features or components. Describe how it fits into the specific screens or components defined in the design documentation, if applicable.]
 
