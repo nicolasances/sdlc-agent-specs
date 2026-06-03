@@ -37,105 +37,24 @@ This skill can also be used to update an existing feature markdown file pre-impl
 - [ ] **Always** start from an idea or concept that is described in a markdown file. If you don't have that, ask the user. **You cannot proceed** without that.
 - [ ] **Ask the user to confirm the codebase**: the user must confirm that you will be generating features for the codebase you're working on.  
 - [ ] Read the codebase. 
+- [ ] Classify the codebase: is it a frontend app or a backend microservice? 
+- [ ] If the codebase is a frontend app, you **MUST** read the `slicing-frontend.md` file and follow the guidelines in that file to break down the idea into features.
+- [ ] If the codebase is a backend microservice, you **MUST** read the `slicing-microservice.md` file and follow the guidelines in that file to break down the idea into features.
 
 ---
 
 ## Guidelines on feature breakdown
 
-Remember: you are working on a single (software-based) component of an architecture. That's usually either a (backend) microservice or a frontend app (PWA or native app or web app).
-You generate features **only** for that component, not for other components. 
+Depending on the codebase you're working on, follow the corresponding slicing strategy to break down the idea into features: 
+- For a frontend app, follow the guidelines for slicing described in the [`slicing-frontend.md`](./slicing-frontend.md) file.
+- For a backend microservice, follow the guidelines for slicing described in the [`slicing-microservice.md`](./slicing-microservice.md) file.
 
-### Definition of a good Feature
-
-A good feature:
-- [ ] is self-contained
-- [ ] can be deployed independently from other services in the architecture. If it has dependencies from other services that should be changed, it can mock them and be deployed independently. 
-- [ ] can be tested independently
-- [ ] is as **small** as it can be. Keep features small in scope. Follow the **MVP pattern**. A good applications grows incrementally from building small features one at a time, not by building it all in one huge chunk (that would be the recipe for disaster). 
-- [ ] does not contain code nor code snippets. It is **describing a desired behavior or state in business and technical terms** but without tying itself to code.
-
-When you have a feature, ask yourself: "can it be broken down into smaller independent features?". If so, break it down.
+**Important:** you **MUST** follow the corresponding slicing strategy for the codebase you're working on. Do not mix strategies, and do not deviate from the guidelines in the strategy.
 
 ### Output format 
 
 Each feature is broken down into a set of `code-agnostic` requirements .
-Each feature needs to be described in a markdown file (.md) with the following format: 
-
-```markdown
-# [Feature Name]
-
-## 1. Purpose & Scope
-[A description of the feature, why it's needed and what it does]
-
-**Out of scope**: 
-- [Thing deliberately excluded]
-- [Thing deliberately excluded]
-
----
-
-## 2. Core Concepts & Requirements
-
-### 2.1. Core Concepts
-A table of core concepts (glossary of concepts) that this idea relies on. The table has 
-- a `term` column that states the name of the concept
-- a `definition` column that explains the concept
-
-### 2.2. Requirements
-
-#### 2.2.1. Data Models
-*(Omit this section if the feature introduces no new data model and modifies no existing one)*
-
-For each data model, state the **collection name** and describe it as a table (4 columns: field name, field type, description, rules — if any).
-
-#### 2.2.2. Endpoints
-*(Microservices only — omit for frontend features)*
-
-List each REST endpoint introduced or modified by this feature. Show the full **REST endpoint** (e.g. `GET /vocabularyItems`, `PUT /vocabularyItems/:id`) with a short description of its behavior, accepted inputs, and any rejection rules.
-
-#### 2.2.3. Interfaces
-*(Frontend only — omit for microservice features)*
-
-Describe the screens, components, or interactions this feature introduces or modifies.
-
-#### 2.2.4. Business Logic
-*(Omit only if there is truly no logic beyond CRUD)*
-
-Describe the rules, flows, algorithms, and invariants that govern this feature's behavior — things that live in the service layer, not in the schema or the route signature. Use one bullet per rule; be specific enough that a developer can implement it without guessing.
-
----
-
-## 3. Key Consumer Stories
-
-The **consumer** is whoever calls this component:
-- For a **microservice**: another service, a frontend app, or an external script calling the API.
-- For a **frontend app**: the end user interacting with the UI.
-
-Frame stories from the consumer's perspective, naming the operation or capability they need, not the end-user product experience.
-
-| # | As a Consumer, I want to… | So that… |
-|---|---|---|
-| CS-01 | [API operation or capability] | [what it enables] |
-| CS-02 | [API operation or capability] | [what it enables] |
-
----
-
-## 4. Constraints and Assumptions
-- [Assumption 1] - [Description and implications]
-- [Assumption 2] - [Description and implications]
-
-- [Constraint 1] - [Description and implications]
-- [Constraint 2] - [Description and implications]
-
----
-
-## 5. Open Questions
-
-| # | Question | Options / Notes |
-|---|---|---|
-| OQ-01 | [Question] | [Options or notes] |
-| OQ-02 | [Question] | [Options or notes] |
-
-```
+Each feature needs to be described in a markdown file (.md) with the format described in the slicing strategy file corresponding to this type of codebase (e.g. frontend, microservice, etc.).
 
 ### Where to store the features
 
@@ -147,7 +66,4 @@ If it does not exist, create it.
 - Starting anything without a clear, refined idea documented in a markdown file
 - Writing any code
 - Adding code snippets into the feature description
-- Business logic buried inside a data model or endpoint description instead of in §2.2.4
-- End-user product goals written as consumer stories for a microservice feature
-- A feature that defines multiple endpoints: it can probably be broken down
-- A feature that defines multiple data models: it can probably be broken down
+- You have not followed the slicing strategy corresponding to this codebase (e.g. you are writing features for a microservice but you are not following the slicing strategy for microservices). 
