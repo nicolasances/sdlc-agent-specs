@@ -131,18 +131,18 @@ AI-generated UI has recognizable patterns. **AVOID all of them**:
 
 ## Loading and Transitions
 
-```tsx
-// Skeleton loading (not spinners for content)
-function TaskListSkeleton() {
-  return (
-    <div className="space-y-3" aria-busy="true" aria-label="Loading tasks">
-      {Array.from({ length: 3 }).map((_, i) => (
-        <div key={i} className="h-12 bg-muted animate-pulse rounded" />
-      ))}
-    </div>
-  );
-}
-```
+Use skeleton shapes to represent loading content — not spinners. Skeleton
+elements should mirror the dimensions and layout of the real content they stand
+in for.
+
+Always mark the skeleton container with `aria-busy="true"` and a descriptive
+`aria-label` for accessibility.
+
+For the skeleton animation itself, use whatever the project already defines
+(e.g. a custom shimmer class in `globals.css`). Do NOT introduce a new animation
+class (such as `animate-pulse`) if the project already has one — check
+`globals.css` and existing components first. Only fall back to a Tailwind
+utility like `animate-pulse` if no project-level skeleton style exists.
 
 ## Red Flags
 
