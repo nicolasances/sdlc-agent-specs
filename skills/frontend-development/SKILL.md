@@ -60,6 +60,40 @@ export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
 }
 ```
 
+**Keep loading skeletons and error management in the component rather than as a separate component:**
+
+```tsx
+// Good: Skeleton inside component
+<ContinueCard module={currentModule ?? null} loading={isProgressLoading} />
+<LevelTrack
+    cefrLevel={cefrLevel}
+    levelName={levelName}
+    totalModules={currentLevelSummary.modulesTotal}
+    completedModules={currentLevelSummary.modulesCompleted}ù
+    loading={isProgressLoading}
+    error={!progress || !cefrLevel || !levelName || !currentLevelSummary}
+/>
+
+// Avoid: Separate skeleton or error component
+{isProgressLoading ? (
+    <ContinueCardSkeleton />
+) : (
+    <ContinueCard module={currentModule ?? null} />
+)}
+{isProgressLoading ? (
+    <LevelTrackSkeleton />
+) : progress && cefrLevel && levelName && currentLevelSummary ? (
+    <LevelTrack
+        cefrLevel={cefrLevel}
+        levelName={levelName}
+        totalModules={currentLevelSummary.modulesTotal}
+        completedModules={currentLevelSummary.modulesCompleted}
+    />
+) : (
+    <LevelTrackError />
+)}
+```
+
 
 ## Design System Adherence
 
