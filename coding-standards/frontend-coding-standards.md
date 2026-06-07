@@ -133,3 +133,8 @@ export function ModuleHeader({
 // Instead PREFER THIS: 
 export function ModuleHeader({kicker, title, communicationGoal}: {kicker: string, title: string, communicationGoal: string})
 ``` 
+
+### Avoid custom font sizes
+
+- Stick to what tailwind provides: `text-xs`, `text-sm`, etc.. 
+- **DO NOT** use things like `text-[13px]`. It reduces consistency across the app.
