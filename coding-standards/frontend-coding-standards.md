@@ -85,3 +85,51 @@ export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
 
 **RED Flags:**
 - you have created an inline SVG. That should **never** happen.
+
+
+### Tailwind over custom CSS classes and inline styles
+
+**Always** perfer Tailwind classes over: 
+- inline CSS
+- custom CSS classes
+
+```typescript
+// AVOID this: 
+<span
+    style={{
+        fontSize: 11,
+        fontWeight: 600,
+        color: 'rgba(0,0,0,0.50)',
+        letterSpacing: '0.10em',
+        textTransform: 'uppercase',
+    }}
+>
+    Some text
+</span>
+
+// Instead PREFER THIS: 
+<span className="text-sm font-semibold uppercase tracking-widest text-black/50">
+    Some text
+</span>
+```
+
+### Inline style for component definition 
+
+For readability purposes, I **do not like** components whose definition is split in multiple rows. 
+**I like the function definition to be on one row**. 
+
+```typescript
+// AVOID this: 
+export function ModuleHeader({
+    kicker,
+    title,
+    communicationGoal,
+}: {
+    kicker: string;
+    title: string;
+    communicationGoal: string;
+})
+
+// Instead PREFER THIS: 
+export function ModuleHeader({kicker, title, communicationGoal}: {kicker: string, title: string, communicationGoal: string})
+``` 
