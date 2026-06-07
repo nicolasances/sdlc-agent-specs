@@ -137,4 +137,9 @@ export function ModuleHeader({kicker, title, communicationGoal}: {kicker: string
 ### Avoid custom font sizes
 
 - Stick to what tailwind provides: `text-xs`, `text-sm`, etc.. 
-- **DO NOT** use things like `text-[13px]`. It reduces consistency across the app.
+- **AVOID** using things like `text-[13px]`. It reduces consistency across the app.
+
+### Avoid custom margin and paddings
+
+- Stick to what tailwind provides: `mt-2`, `pt-4`, etc.. 
+- **AVOID** the usage of custom pixel classes such as `mt-[12px]`. That is bad and reduces consistency across the app.
