@@ -17,97 +17,16 @@ Build production-quality user interfaces that are accessible, performant, and vi
 - Adding interactivity or state management
 - Fixing visual or UX issues
 
-## Component Architecture
+## Coding Standards
 
-### Component Patterns
-
-**Prefer composition over configuration:**
-
-```tsx
-// Good: Composable
-<Card>
-  <CardHeader>
-    <CardTitle>Tasks</CardTitle>
-  </CardHeader>
-  <CardBody>
-    <TaskList tasks={tasks} />
-  </CardBody>
-</Card>
-
-// Avoid: Over-configured
-<Card
-  title="Tasks"
-  headerVariant="large"
-  bodyPadding="md"
-  content={<TaskList tasks={tasks} />}
-/>
-```
-
-**Keep components focused:**
-
-```tsx
-// Good: Does one thing
-export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
-  return (
-    <li className="flex items-center gap-3 p-3">
-      <Checkbox checked={task.done} onChange={() => onToggle(task.id)} />
-      <span className={task.done ? 'line-through text-muted' : ''}>{task.title}</span>
-      <Button variant="ghost" size="sm" onClick={() => onDelete(task.id)}>
-        <TrashIcon />
-      </Button>
-    </li>
-  );
-}
-```
-
-**Keep loading skeletons and error management in the component rather than as a separate component:**
-
-```tsx
-// Good: Skeleton inside component
-<ContinueCard module={currentModule ?? null} loading={isProgressLoading} />
-<LevelTrack
-    cefrLevel={cefrLevel}
-    levelName={levelName}
-    totalModules={currentLevelSummary.modulesTotal}
-    completedModules={currentLevelSummary.modulesCompleted}ù
-    loading={isProgressLoading}
-    error={!progress || !cefrLevel || !levelName || !currentLevelSummary}
-/>
-
-// Avoid: Separate skeleton or error component
-{isProgressLoading ? (
-    <ContinueCardSkeleton />
-) : (
-    <ContinueCard module={currentModule ?? null} />
-)}
-{isProgressLoading ? (
-    <LevelTrackSkeleton />
-) : progress && cefrLevel && levelName && currentLevelSummary ? (
-    <LevelTrack
-        cefrLevel={cefrLevel}
-        levelName={levelName}
-        totalModules={currentLevelSummary.modulesTotal}
-        completedModules={currentLevelSummary.modulesCompleted}
-    />
-) : (
-    <LevelTrackError />
-)}
-```
-
-
-## Design System Adherence
-
-- Always use **tailwind** classes.
-
-### Toto React
-
-- Make sure to use the `toto-react` library whenever possible. 
-- First check what the toto-react library provides before implementing from scratch UI components. 
+- [ ] You **must always** read the frontend coding standards stored in the repo `nicolasances/sdlc-agent-specs/coding-standards/frontend-coding-standards.md` and you **MUST** follow these when coding a frontend
+- [ ] Always use **tailwind** classes.
+- [ ] Make sure to use the `toto-react` library whenever possible. **Always** check first what the toto-react library provides before implementing from scratch UI components. 
 
 ### Wireframe and design system
 
-- If a wireframe or design system exist for the interfaces use it. 
-- If you cannot easily find a wireframe or design system, **ask the user about it**.
+- [ ] If a wireframe or design system exist for the interfaces use it. 
+- [ ] If you cannot easily find a wireframe or design system, **ask the user about it**.
 
 ### Avoid the AI Aesthetic
 
