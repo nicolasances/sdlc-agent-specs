@@ -13,6 +13,15 @@ These are the coding standards **that MUST be followed** whenever implementing a
 
 ---
 
+## REST Endpoints
+
+- **Only** create REST endpoints **when the endpoint needs to be consumed by an external consumer**. Do not create endpoints that are only meant for internal usage within this microservice. Public endpoints will end up being used, so avoid making them if they're only made for internal usage: prefer an internal function or class, not exposed to external consumers.
+
+**RED flags:**
+- An endpoint is meant to be used internally by the microservice itself. Prefer a function or class that is not exposed to external consumers through a REST endpoint.
+
+---
+
 ## API Documentation
 
 Always follow these rules: 
