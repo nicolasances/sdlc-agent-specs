@@ -25,6 +25,8 @@ The `api-endpoints.md` **must** follow this format:
 ```markdown
 # API Endpoints
 
+[Table of Content]
+
 ## Resource 1
 | Method | Endpoint | Description | 
 | ------ | -------- | ----------- |
