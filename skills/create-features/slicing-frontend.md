@@ -1,5 +1,11 @@
 # Slicing Strategy for Frontend
 
+## Pre-requisites
+
+Before creating features for a frontend, you **must**: 
+- [ ] Verify that you have a good understanding of the architecture of the app. For that, you **must** have read an architecture description. Often you will find it in the `docs` folder. If you cannot find it, you **must** ask the user.
+- [ ] Map the backend microservices. You **must** know which backend microservices are supporting this app. These are usually described in the architecture description.
+
 ## Guiding Principle
 
 **For a frontend, a Feature is a Capability — a coherent, independently-valuable slice of user functionality, delivered end-to-end.**
@@ -63,6 +69,17 @@ Each capability becomes **one Feature file**, owning its screen(s) end-to-end. I
 ### Step 4 — Pull out cross-cutting shared components
 
 If a component is used by **three or more** screens, give it its own Feature so its behaviour and contract are defined once; every screen that uses it references it. Do this only for genuinely cross-cutting components; one- or two-screen components stay inside their owning feature.
+
+### Step 4 - Map integrations
+
+The frontend relies on backend microservices that expose REST APIs to fetch data, send data and execute business logic. 
+
+You will: 
+- [ ] read which API endpoints they provide. Look at the microservice documentation (stored under the `docs` folder of that microservice) and map which endpoints are provided and their meaning. Microservices are stored on github. Their repo is usually described in the architecture documentation. 
+- [ ] For each screen or UI component that requires data or backend functionalities, you **must**: 
+    - find which endpoint, among those available in the backend microservice(s), is to be used by the component
+    - if you cannot find one, mark this as a **critical open point** to be fixed before implementation
+
 
 ### Step 5 — Coverage check (mandatory before finishing)
 
@@ -178,11 +195,20 @@ One bullet per rule; specific enough to implement without guessing.]
 | # | Decision | Rationale |
 |---|----------|-----------|
 
-**API Integrations:**
+
+### 5.1. API Integrations
+
 [Document all API integrations with backend microservices]
 | Component or Screen | API Integration | Description | 
 | ------------------- | --------------- | ----------- | 
-| <name of component> | <HTTP Method> <endpoint> | [for what purpose is this API used by the component or screen? what is the data or functionality used for?]
+| <name of component> | <HTTP Method> <endpoint> | [for what purpose is this API used by the component or screen? what is the data or functionality used for?] | 
+
+**Missing**
+[Document all missing endpoints that you could not find in the backend microservices]
+
+| Component or Screen | Missing API endpoint |
+| ------------------- | -------------------- |
+| <name of component> | [Description of what endpoint might be missing and why it is necessary to implement the component]
 
 ## 6. Success Criteria
 [Measurable criteria for "this capability is done and correct".]
