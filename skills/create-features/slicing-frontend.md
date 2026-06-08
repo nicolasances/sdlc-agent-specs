@@ -172,11 +172,17 @@ reference that feature here rather than re-describing the component.]
 [Rules, flows, algorithms, invariants, and client-side logic for this capability.
 One bullet per rule; specific enough to implement without guessing.]
 
-## 5. Technical Decisions
+## 5. Technical Decisions & Integrations
 [Architectural decisions for this capability, especially deviations or forks.]
 
 | # | Decision | Rationale |
 |---|----------|-----------|
+
+**API Integrations:**
+[Document all API integrations with backend microservices]
+| Component or Screen | API Integration | Description | 
+| ------------------- | --------------- | ----------- | 
+| <name of component> | <HTTP Method> <endpoint> | [for what purpose is this API used by the component or screen? what is the data or functionality used for?]
 
 ## 6. Success Criteria
 [Measurable criteria for "this capability is done and correct".]
