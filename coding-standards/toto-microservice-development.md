@@ -57,3 +57,41 @@ The `api-endpoints.md` **must** follow this format:
 
 ### API Design
 - Only use the following HTTP Methods: `POST`, `PUT`, `GET`, `DELETE`. No other methods.
+
+--- 
+
+## Database Integration
+
+- [ ] Always **avoid a database integration in a loop**. This is a common mistake that can lead to performance issues and bugs. If you need to perform multiple database operations, consider using **bulk operations**  instead of looping through individual operations.
+
+```typescript
+// BAD: database integration in a loop
+for (const item of items) {
+    const reference = await store.findById(item.referenceId);
+    // Do something
+}
+
+// GOOD: bulk database integration: the store needs to provide a bulk method to find multiple items by their ids
+const referenceIds = items.map(item => item.referenceId);
+const references = await store.findByIds(referenceIds);
+```
+
+- [ ] Always **avoid** multiple fetches of the same data within the same function. If you need to fetch the same data multiple times, consider fetching it once and storing it in a variable, or using a caching mechanism if appropriate.
+
+```typescript
+// BAD: multiple fetches of the same data
+for (const answer of session.answers) {
+    const exercise = await exerciseStore.findById(answer.exerciseId);
+    // Do something
+}
+const sessionVocabIds: string[] = [];
+for (const exerciseId of [...new Set(session.answers.map(a => a.exerciseId))]) {
+    const exercise = await exerciseStore.findById(exerciseId);
+    // Do something else
+}
+
+// GOOD: fetch the data once and store it in variables
+const exerciseIds = [...new Set(session.answers.map(a => a.exerciseId))];
+const exercises = await exerciseStore.findByIds(exerciseIds);
+// Do something with the exercises
+```
