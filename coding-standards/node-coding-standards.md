@@ -2,7 +2,9 @@
 
 When coding in Typescript in NodeJS you **MUST** follow these coding standards. 
 
-## Style
+---
+
+## Formatting & Style
 
 ### Inline Whenever Possible 
 
@@ -78,25 +80,43 @@ parseRequest(req: Request): AddSentenceAlternativeRequest {
 }
 ```
 
-### Comments
+---
 
-- Comment all methods.
+## Code Documentation & Comments
+
+### Comment all methods (functions)
+
+- [ ] All methods (functions) must be commented wiht **JSDoc**. Always.
 
 Example of comments
 ```typescript
     /**
      * [Description of what the function does]
+     * 
      * [Any special rules worth documenting (business logic)]:
      * - [Rule 1]
      * - [Rule 2]
      * 
-     * @param challenge the challenge to upsert
+     * @param {type} paramName - [Describe the param and what it's for]
      * 
-     * @return [returned data]
+     * @returns {type} [returned data]
      */
     async saveChallenge(challenge: TomeChallenge): Promise<void> {
         // ...
     }
+```
+
+### Comment interface and class fields
+
+- [ ] All class or interface fields (attributes) **must** be commented inline.
+
+Example:
+```typescript
+interface UserInput {
+    id: string;             // The id of the user. Hex string representation of the MongoDB ObjectId. Generated automatically by the Database.
+    email: string;          // The email of the user.
+    createdAt: string;      // The time at which the user was created. 
+}
 ```
 
 ---
