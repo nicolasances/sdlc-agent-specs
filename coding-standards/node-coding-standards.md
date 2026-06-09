@@ -137,4 +137,6 @@ interface UserInput {
 
 ## Tests
 
-- [ ] When writing unit tests **ALWAYS** use Mocha. 
+- [ ] When writing unit tests **ALWAYS** use Mocha
+- [ ] Tests must be stored in a `<projectRoot>/test` folder
+- [ ] Structure tests in subfolders to reflect the structure of the code. The folder `<projectRoot>/test` should be structured to reflect the folder structure of the `<projectRoot>/src`. This promotes redability.
