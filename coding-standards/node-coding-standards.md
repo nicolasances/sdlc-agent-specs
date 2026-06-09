@@ -108,7 +108,7 @@ Example of comments
 
 ### Comment interface and class fields
 
-- [ ] All class or interface fields (attributes) **must** be commented inline.
+- [ ] All class or interface fields (attributes) **must** be commented inline. This is **important**: no documentation of classes and interfaces means poor readability and code that cannot be understood by the user.
 
 Example:
 ```typescript
