@@ -116,7 +116,7 @@ You follow this workflow:
 1. Build the project 
 2. Run the tests. If tests fail, understand the problem and go back to Phase 2. 
 3. Clean up task files and update feature documentation (see below). **Commit and push** after that. 
-4. Update the Feature markdown file with an "Implemented" badge: `![Status](https://img.shields.io/badge/status-implemented-brightgreen?style=flat-square)`. This is **IMPORTANT**. 
+4. Update the Feature markdown file with an "Implemented" badge: `![Status](https://img.shields.io/badge/status-implemented-brightgreen?style=flat-square)`. This is **IMPORTANT**. Also update the `README.md` file in the `docs/features` folder, that contains the map of all features (index).
 5. Open a Pull Request. **Always** open a PR when you are done.
 6. Link the Github issue to the PR 
 
