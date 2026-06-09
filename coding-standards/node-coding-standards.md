@@ -8,8 +8,9 @@ When coding in Typescript in NodeJS you **MUST** follow these coding standards.
 
 ### Inline Whenever Possible 
 
-**Do not** break a line of code in multiple lines. Example: 
+- [ ] **Do not** break a line of code in multiple lines. 
 
+Example: 
 ```typescript
 // DO NOT DO: 
 async findByLanguageWithStats({ language, userId, page, pageSize }: {
@@ -27,8 +28,12 @@ async findByLanguageWithStats({ language, userId, page, pageSize }: { language: 
 - **Arrays** can be broken into multiple lines. 
 - Complex objects and structures can be broken into multiple lines if the number of fields or the nesting complexity are too high.
 
+
 ### Use Interfaces and Classes rather than inline objects
 
+- [ ] Always use Interfaces and Classes rather than inline objects. 
+
+Example:
 ```typescript
 // DO NOT DO: 
 someFunction({ language, userId, page, pageSize }: { language: string; userId: string; page: number; pageSize: number; }): {...}
@@ -55,8 +60,7 @@ This is what I typically like:
 - Single lines within a block statement (or if .. else statement) should not have empty lines around. 
 - If statements should be separated from the rest of the code with empty lines before and after.
 
-An example: 
-
+Example: 
 ```typescript 
 // I DON'T LIKE WHEN ALL CODE IS COMPACTED TOGETHER: 
 parseRequest(req: Request): AddSentenceAlternativeRequest {
@@ -129,7 +133,8 @@ interface UserInput {
 - Database integration **must** always happen in a "Store" class. E.g. `SentenceStore` will contain all the methods to read and write objects in the `sentence` collection.
 - When using MongoDB, no need to wrap `ObjectId` in a try-catch statement. It is ok that a runtime exception is thrown, if the rest of the service is well built (e.g. validation) this should never happen. So **do not do this**: `try { oid = new ObjectId(sentenceId); } catch { ... }`. Just do `new ObjectId(sentenceId)` instead and use it.
 
+---
 
 ## Tests
 
-- When writing unit tests **ALWAYS** use Mocha. 
+- [ ] When writing unit tests **ALWAYS** use Mocha. 
