@@ -8,6 +8,8 @@ description: Prepares for the development of a feature in a codebase.
 This skill is a step of feature development. 
 This skill performs all the necessary actions to prepare an agent for the development of a feature.
 
+---
+
 ## Starting point
 
 The starting point is **always** a Feature, described in a **markdown file**. 
@@ -20,9 +22,11 @@ If this checklist is not **all** satisfied, as the user for the missing informat
 - [ ] You have read the feature described in the markdown file.
 - [ ] You know which **codebase** (project, repo) you are working on. 
 
+---
+
 ## The Workflow
 
-You **must always strictly** follow this workflow when implementing a feature:
+You **must always strictly** follow this workflow when preparing the implementation of a feature:
 
 1. Read the codebase to understand current state
 2. Read the feature description and **address all the open points**, if there are any, with the user. 
@@ -34,10 +38,11 @@ You **must always strictly** follow this workflow when implementing a feature:
 6. Create a feature branch. 
 7. Ask the user for confirmation of the task list before proceeding. 
 
+---
+
 ## Rules
 
-### When to engage the user
-
+***When to engage the user:**
 - [ ] Always engage the user to close the open points. Present lists of options. For each open point, the user **MUST** always either: 
   - choose an option
   - specify an alternative solution
@@ -45,16 +50,12 @@ You **must always strictly** follow this workflow when implementing a feature:
 - [ ] **Always ask the user** for any non-trivial architectural or technical decision that you need to make to create the task list. Do that only when there are multiple options that are substantially different from each other.
 - [ ] Always **ask the user to confirm** the task list before considering the preparation step done.
 
-### Rules for addressing Open Points
-
+**Rules for addressing Open Points:**
 - [ ] Each Open Point must be addressed to the user. You must present to the user:
-  1. **Different Options** to solve the open point 
-  2. The possibility for the user to **provide an answer**
-  3. The possibility to mark the Open Point as `linked to Github issue`. That means that the Open Point will be fixed later by a separate implementation, tracked by a new Github issue. *This could be used, for example, when building a UI and a backend API has not yet been implemented*.
-
+    1. **Different Options** to solve the open point 
+    2. The possibility for the user to **provide an answer**
+    3. The possibility to mark the Open Point as `linked to Github issue`. That means that the Open Point will be fixed later by a separate implementation, tracked by a new Github issue. *This could be used, for example, when building a UI and a backend API has not yet been implemented*.
 - [ ] If the user chooses option 3, you **must** create a Github issue. 
-
-### Rules for creating Github issues
 
 **Rules for creating the GitHub issue for the feature implementation** (that is, the GH issue linked to the feature to develop): 
 - [ ] It **must** be in the repo connected to the codebase where the feature will be implemented. 
@@ -68,7 +69,7 @@ You **must always strictly** follow this workflow when implementing a feature:
 - [ ] It **must** refer to the specific open point that is left open
 - [ ] It **must** be labeled with the label `fix`.
 
-### Rules for breaking down the feature into tasks
+**Rules for breaking down the feature into tasks:**
 For a frontend feature: 
 - Building a UI Component should be considered a task. 
 - Apply vertical slices when slicing a feature. 
@@ -80,8 +81,10 @@ For a changed (already-implemented) feature:
 - **Include removal tasks** for behavior the change drops — these are the ones most easily missed when working from an end-state spec.
 - Do **not** create tasks that rebuild parts of the feature the change did not touch.
 
-### Rules for creating the feature branch
+**Rules for creating the feature branch:**
 - [ ] The feature branch must be named `feature/<feature-name>` where <feature-name> is a short name (dash-separated-words) of the feature.
+
+---
 
 ## Acceptance Criteria 
 You are done with preparing the Feature for development **ONLY IF:**
