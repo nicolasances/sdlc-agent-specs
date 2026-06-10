@@ -49,7 +49,7 @@ The following is left out of scope of this fix:
 **Rules for creating the Github Issue:**
 - [ ] It **must** be in the repo connected to the codebase where the feature will be implemented. 
 - [ ] It **must refer** to all the Feature .md files that are impacted by this issue. 
-- [ ] It **must** be labeled with the label `fix`.
+- [ ] It **must** be labeled with the label `fix`. If the label does not exist, you **MUST** create it.
 
 --- 
 
