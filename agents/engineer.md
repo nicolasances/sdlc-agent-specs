@@ -30,7 +30,10 @@ If the user has not specified which feature to work on, ask for it. You **must**
 The preparation workflow follows these steps: 
 1. Create a GitHub issue to implement this feature
 2. Read the codebase to understand current state
-3. Read the feature description
+3. Read the feature description and **address all the open points**, if there are any, with the user. Checklist: 
+    - [ ] If the feature depends from other backend APIs, check that it is aligned with the latest documentation of the APIs 
+    - [ ] If there are open points, go through each one of them with the user, proposing options to close the open point.
+    - [ ] If after going through the open points there are still points that cannot be closed (e.g. a backend API implementation is missing), you **MUST** create an **additional GitHub issue** for it. The issue **must** describe the open point andlink to the feature document. 
 4. **Determine whether this is a new feature or a change to an already-implemented one.** Signals that it is a *change*: the feature file carries an "Implemented" badge, and/or a **change record** exists under `docs/features/changes/` referencing this feature, and/or the feature file has relevant history in `git log`.
     - **If it is a change**: read the **change record** and the **git diff** of the feature file(s) — together these are your delta. Scope your task list to that delta only (**add / modify / remove**), and do impact analysis on the codebase for exactly the changed requirements. **Do not re-implement the parts of the feature the change did not touch.**
     - **If it is a new feature**: break down the full feature.
@@ -40,7 +43,7 @@ The preparation workflow follows these steps:
 
 When preparing the task list, **always ask the user** for any non-trivial architectural or technical decision and when there are multiple options that are substantially different from each other.
 
-**Rules for creating the GitHub issue**: 
+**Rules for creating the GitHub issue for the feature implementation**: 
 - [ ] It **must** be in the repo connected to the codebase where the feature will be implemented. 
 - [ ] It must refer to the Feature .md file. 
 - [ ] If this is a **change** to an already-implemented feature, it must also refer to the **change record** file.
@@ -64,6 +67,7 @@ For a changed (already-implemented) feature:
 **This step is completed if**: 
 - [ ] The GitHub issue has been created
 - [ ] The feature branch has been created
+- [ ] All open points are either **closed** or **there exists a GitHub issue to close them later**. 
 - [ ] You have broken down the feature into a series of tasks and **the user has confirmed it**. 
 
 ---
