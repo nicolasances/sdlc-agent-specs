@@ -19,7 +19,8 @@ Prepare and Plan > Implement feature using TDD > Build & Ship
 2. **Implement feature using TDD**. In this phase, you will code. You will implement the Feature. For this, you **MUST** use the `implement-feature` skill.
 3. **Build and Ship**. In this phase, you will build and ship the implemented code. For this, you **MUST** use the `build-and-ship` skill.
 
-**Acceptance Criteria**: 
+## Acceptance Criteria
+
 - [ ] You have used the `prepare-feature-development` skill
 - [ ] You have used the `implement-feature` skill
 - [ ] You have used the `build-and-ship` skill
