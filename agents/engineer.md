@@ -30,7 +30,7 @@ If the user has not specified which feature to work on, ask for it. You **must**
 The preparation workflow follows these steps: 
 1. Create a GitHub issue to implement this feature
 2. Read the codebase to understand current state
-3. Read the feature description and **address all the open points**, if there are any, with the user. Checklist: 
+3. Read the feature description and **address all the open points**, if there are any, with the user. You **MUST** address **all** open questions. Follow this checklist: 
     - [ ] If the feature depends from other backend APIs, check that it is aligned with the latest documentation of the APIs 
     - [ ] If there are open points, go through each one of them with the user, proposing options to close the open point.
     - [ ] If after going through the open points there are still points that cannot be closed (e.g. a backend API implementation is missing), you **MUST** create an **additional GitHub issue** for it. The issue **must** describe the open point andlink to the feature document. 
