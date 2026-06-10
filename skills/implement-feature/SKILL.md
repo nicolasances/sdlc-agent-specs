@@ -6,7 +6,7 @@ description: Implements a feature in a codebase
 # Implement Feature
 
 This skill is a step of feature development. 
-This skill actually implements a Feature in the codebase. 
+This skill actually implements a *Feature* or a *Fix* in the codebase. 
 
 **Terminology:**
 - A *Feature* is an new capability provided by the project. It **must** always be described in its own **markdown file** in the codebase.
