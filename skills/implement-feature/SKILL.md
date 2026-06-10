@@ -26,6 +26,8 @@ If this checklist is not **all** satisfied you **must not and are not allowed** 
 - [ ] You know which **codebase** (project, repo) you are working on. 
 - [ ] You know which Github issue you are working against
 
+---
+
 ## The Workflow
 
 You **must always strictly** follow this workflow when implementing a feature:
