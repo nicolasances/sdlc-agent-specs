@@ -35,7 +35,7 @@ You **must always strictly** follow this workflow when preparing the implementat
     - **If it is a new feature**: break down the full feature.
 4. Create a **GitHub issue** to implement this feature
 5. Breakdown the feature (or the change delta) into a series of changes you will need to implement. **Prepare a task list**. 
-6. Create a feature branch. 
+6. Create a feature branch, **if** the codebase is not already in a branch.
 7. Ask the user for confirmation of the task list before proceeding. 
 
 ---
@@ -82,6 +82,7 @@ For a changed (already-implemented) feature:
 - Do **not** create tasks that rebuild parts of the feature the change did not touch.
 
 **Rules for creating the feature branch:**
+- [ ] Only create a feature branch if the codebase is not already in a branch. If the codebase is already in a branch, you can work in that branch and skip this step.
 - [ ] The feature branch must be named `feature/<feature-name>` where <feature-name> is a short name (dash-separated-words) of the feature.
 
 ---

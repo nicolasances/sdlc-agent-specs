@@ -31,7 +31,7 @@ You **must always strictly** follow this workflow when preparing the implementat
 1. Read the codebase to understand current state
 2. Read any relevant feature description to understand the context of the fix. 
 3. Breakdown the fix into a plan: a series of changes you will need to implement. **Prepare a task list**. 
-4. Create a feature branch. 
+4. Create a feature branch, **if** the codebase is not already in a branch.
 5. Ask the user for confirmation of the task list before proceeding. 
 
 ---
@@ -46,6 +46,7 @@ You **must always strictly** follow this workflow when preparing the implementat
 - Keep it simple: no need to have 100 tasks. 1-3 tasks for a fix should be more than enough.
 
 **Rules for creating the feature branch:**
+- [ ] Only create a feature branch if the codebase is not already in a branch. If the codebase is already in a branch, you can work in that branch and skip this step.
 - [ ] The feature branch must be named `feature/<fix-name>` where <fix-name> is a short name (dash-separated-words) of the feature.
 
 ---
