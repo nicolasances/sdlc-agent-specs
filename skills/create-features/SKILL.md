@@ -74,6 +74,7 @@ A feature file always describes the **target end-state**, never a change. So whe
 - **Altitude:** stay code-agnostic. Describe impact at the level of **screens and components named in the feature files** — not code symbols, files, or functions (the implementer maps those to code during planning).
 
 **Template:**
+The feature file must be named: `F<number>-<short-slug>.md` (e.g. `F01-login.md`), and the change record must be named: `<YYYY-MM-DD>-<short-slug>.md` (e.g. `2024-06-01-add-login-screen.md`).
 
 ```markdown
 # Change: <short title>   (<YYYY-MM-DD>)
