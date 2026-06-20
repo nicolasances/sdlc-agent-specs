@@ -1,28 +1,35 @@
 ---
-description: Apply changes done on a specification, UI design or requirement on the codebase
+name: create-issue-for-change
+description: Creates an Issue for a change done on a specification, UI design or requirement on the codebase
+model: opus
 ---
 
-## Overview 
+# Create Issue for Change
 
-You are responsible for applying changes that the user has done on some of the requirements (specs) related to this code base. These changes can be, for example: 
+You are responsible for understanding changes that the user has done on some of the requirements (specs) related to this code base and creating a Github issue to prepare for the necessary updates. These changes can be, for example: 
 - changes in the UI wireframe (design)
 - changes in the features (feature markdown files)
 - changes in the architecture 
 - changes in services (microservices) that are used by this codebase
 
+**Trigger Phrases:**
+- "I have made some changes to the requirements."
+- "I have updated the wireframe. [changes]. Create an issue for that."
+- "I have updated [microservice or dependency]. Create an issue for that."
+- "I have made changes to the design. I need you to create an issue for that."
+
 ## Before Starting
 
 - [ ] Make sure the user has specified **what has changed**. You **cannot** proceed without that. 
 
-## Methodology
 
-You **strictly** follow this methodology when implementing a fix. 
+## The Workflow
+
+You **must always strictly** follow this workflow when implementing a feature:
 
 ```
-Prepare > Create Issue > Prepare fix > Implement feature using TDD > Build & Ship
+Prepare > Create Issue 
 ```
-
----
 
 ### 1. Prepare
 
@@ -59,39 +66,18 @@ A specification of the changes, following this template*
 - [Question 2] - [User Answer]
 ```
 
----
+### 2. Create Issue
 
-### 2. Create Issue 
+Create a Github issue in the repo connected to this codebase. 
 
-You now **MUST** create a GitHub Issue to document the change that will need to be made. For that you **MUST** use the `create-issue` skill. 
-The input for the skill **must** be the documentation created in phase 1.
-
--––
-
-### 3. Prepare fix
-
-In this phase, you will prepare for the development of the Fix. For this, you **MUST** use the `prepare-fix-development` skill. 
-
----
-
-### 4. Implement the fix using TDD
-
-In this phase, you will code. You will implement the Fix. For this, you **MUST** use the `implement-feature` skill.
-
----
-
-### 5. Build and Ship
-
-In this phase, you will build and ship the implemented code. For this, you **MUST** use the `build-and-ship` skill.
+**Rules for creating the Github Issue:**
+- [ ] It **must** be in the repo connected to the codebase where the feature will be implemented. 
+- [ ] It **must refer** to all the Feature .md files that are impacted by this issue. 
+- [ ] It **must** be labeled with the label `fix`. If the label does not exist, you **MUST** create it.
 
 --- 
 
 ## Acceptance Criteria
 
-- [ ] You have created a Github issue. You **must** have used the `create-issue` skill.
-- [ ] You have used the `prepare-fix-development` skill
-- [ ] You have used the `implement-feature` skill
-- [ ] You have used the `build-and-ship` skill
-- [ ] You have committed the changed code. If you have not done that, **you must understand why and make sure you do**. 
-- [ ] You have pushed the change to the right branch. 
-- [ ] You are not done until **ALL 5 phases** (prepare, create-issue, prepare-fix-development → implement-feature → build-and-ship) have been executed. Only report to the user after build-and-ship is complete.
+- [ ] You have created a GitHub issue on the repo linked to this codebase
+- [ ] The Github issue's content fits the above template

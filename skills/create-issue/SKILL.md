@@ -1,6 +1,7 @@
 ---
 name: create-issue
 description: Creates an Issue that will require a fix for a given codebase
+model: opus
 ---
 
 # Create Issue
