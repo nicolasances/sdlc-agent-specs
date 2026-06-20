@@ -25,3 +25,4 @@ Prepare and Plan > Implement feature using TDD > Build & Ship
 - [ ] You have used the `build-and-ship` skill
 - [ ] You have committed the changed code. If you have not done that, **you must understand why and make sure you do**. 
 - [ ] You have pushed the change to the right branch. 
+- [ ] You are not done until **ALL three phases** (prepare-fix-development → implement-feature → build-and-ship) have been executed. Only report to the user after build-and-ship is complete.
