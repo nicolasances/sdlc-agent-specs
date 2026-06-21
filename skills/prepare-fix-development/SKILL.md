@@ -1,6 +1,7 @@
 ---
 name: prepare-fix-development
 description: Prepares for the development of a feature in a codebase.
+model: opus
 ---
 
 # Prepare Fix Development
