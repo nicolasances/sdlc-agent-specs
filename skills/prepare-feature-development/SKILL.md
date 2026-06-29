@@ -35,7 +35,7 @@ You **must always strictly** follow this workflow when preparing the implementat
     - **If it is a change**: read the **change record** and the **git diff** of the feature file(s) — together these are your delta. Scope your task list to that delta only (**add / modify / remove**), and do impact analysis on the codebase for exactly the changed requirements. **Do not re-implement the parts of the feature the change did not touch.**
     - **If it is a new feature**: break down the full feature.
 4. Create a **GitHub issue** to implement this feature
-5. Breakdown the feature (or the change delta) into a series of changes you will need to implement. **Prepare a task list**. 
+5. Breakdown the feature (or the change delta) into a series of changes you will need to implement. **Prepare a task list**. You **MUST** use the `breakdown-feature`skill to breakdown a feature into tasks. Once you have the tasks, make the plan as a task list.
 6. Create a feature branch, **if** the codebase is not already in a branch.
 7. Ask the user for confirmation of the task list before proceeding. 
 
@@ -69,13 +69,6 @@ You **must always strictly** follow this workflow when preparing the implementat
 - [ ] It must refer to the Feature .md file. 
 - [ ] It **must** refer to the specific open point that is left open
 - [ ] It **must** be labeled with the label `fix`.
-
-**Rules for breaking down the feature into tasks:**
-For a frontend feature: 
-- Building a UI Component should be considered a task. 
-- Apply vertical slices when slicing a feature. 
-    - **GOOD**: A task that covers UI component + presentation logic + API integration. 
-    - **BAD (avoid)** Avoid horizontal slices (task1: all UI, task 2: all API integrations, etc.)
 
 For a changed (already-implemented) feature:
 - Scope tasks to the delta from the change record + the feature file's git diff: **add / modify / remove**.

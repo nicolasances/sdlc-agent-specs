@@ -31,7 +31,7 @@ You **must always strictly** follow this workflow when preparing the implementat
 
 1. Read the codebase to understand current state
 2. Read any relevant feature description to understand the context of the fix. 
-3. Breakdown the fix into a plan: a series of changes you will need to implement. **Prepare a task list**. 
+3. Breakdown the fix into a plan: a series of changes you will need to implement. **Prepare a task list**. You **MUST** use the `breakdown-feature`skill to breakdown a fix into tasks. Once you have the tasks, make the plan as a task list.
 4. Create a feature branch, **if** the codebase is not already in a branch.
 5. Ask the user for confirmation of the task list before proceeding. 
 
