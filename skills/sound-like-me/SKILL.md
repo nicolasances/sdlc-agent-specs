@@ -35,19 +35,20 @@ If you can delete a sentence and lose only the *rhetoric* (not the *information*
 5. **Avoid evocative metaphor and abstraction.** No "the spine everything hangs off", "where the real decisions live", "paved road" used repeatedly, "north star", "the connective tissue". One plain metaphor occasionally is fine; a metaphor per paragraph is not.
 6. **Don't add unrequested scaffolding.** No aspirational "success measures" section, no motivational aside, no "why this matters" preamble that wasn't asked for. A shorter document covering only what's real beats a padded one.
 7. **Drop the tricolon reflex.** AI defaults to three parallel items for rhythm ("fast, safe, and scalable"). Use the number of items that are actually true — two, or five — not three for the cadence.
+8. **Cut per-line micro-justifications.** AI appends a small defensive clause to nearly every bullet, anticipating pushback ("…this is the delivery teams' work", "…not worth narrowing the pool"). When each item in a list carries its own trailing "because…", cut them: state the decision, not the defense. This is about the *reflex*, not reasoning itself — deliberate rationale that someone would act on (a trade-off worth recording, a genuinely non-obvious "why") is content and stays. The test: does the justification inform a future decision, or does it just defend the sentence it's attached to?
 
 ### Concreteness
 
-8. **Replace generic examples with real specifics.** Name the actual teams, systems, processes, and domain vocabulary instead of textbook-generic terms. Prefer the precise real term ("confidentiality breach, loss of availability, loss of integrity") over the vague generic one ("security problems").
-9. **Prefer complete literal enumeration over compressed elegance.** When listing scope, spell out the full range ("from chatbots to autonomous multi-agent systems") rather than a tidy summary that sounds neat but says less.
-10. **Choose the plainer everyday word.** "target" over "sanctioned"; "must-haves" over "non-negotiables"; "uses" over "leverages"; "build" over "architect" (as a verb). Prefer the word you'd actually say out loud.
+9. **Replace generic examples with real specifics.** Name the actual teams, systems, processes, and domain vocabulary instead of textbook-generic terms. Prefer the precise real term ("confidentiality breach, loss of availability, loss of integrity") over the vague generic one ("security problems"). Vague terms can be used but should be complemented with the real specifics. If you don't know the specifics, ask the user rather than inventing them.
+10. **Prefer complete literal enumeration over compressed elegance.** When listing scope, spell out the full range ("from chatbots to autonomous multi-agent systems") rather than a tidy summary that sounds neat but says less.
+11. **Choose the plainer everyday word.** "target" over "sanctioned"; "must-haves" over "non-negotiables"; "uses" over "leverages"; "build" over "architect" (as a verb). Prefer the word you'd actually say out loud.
 
 ### Surface mechanics
 
-11. **Colon, not em-dash, after a bold label.** Use `**Label**:` not `**Label** —`. Minimize em-dashes generally; break into a new sentence instead.
-12. **Bold the leading verb/phrase of action bullets** (**Drive** collaborative builds, **Grow and mentor**, **Partner** with…). It signals the action at a glance.
-13. **Don't smooth repetition away for its own sake.** Repeating a subject or structure across parallel points ("The profile must know… The profile must know…") reads as human. AI polish always varies sentence openings; resist that urge.
-14. **Cross-reference in prose, not with symbols.** "covered in the standards below" rather than "(see #5)".
+12. **Colon, not em-dash, after a bold label.** Use `**Label**:` not `**Label** —`. Minimize em-dashes generally; break into a new sentence instead.
+13. **Bold the leading verb/phrase of action bullets** (**Drive** collaborative builds, **Grow and mentor**, **Partner** with…). It signals the action at a glance.
+14. **Break long compound sentences into short plain ones.** AI chains clauses with semicolons and em-dashes into elegant multi-line sentences. Split them, even if the subject repeats ("The profile must know… The profile must know…") — repetition across parallel points reads as human. AI polish always varies sentence openings; resist that urge.
+15. **Cross-reference in prose, not with symbols.** "covered in the standards below" rather than "(see #5)".
 
 ## Example bank (calibration)
 
@@ -56,25 +57,28 @@ These are real AI→user rewrites. They calibrate the register better than the r
 | AI version (before) | Sounds-like-me (after) | Rule |
 |---|---|---|
 | "…to make moving *fast* and moving *safely* the same thing — enabling AI at scale while heading off the risks." | "…to enable scaling AI, increasing our speed of adoption and maturity, while making sure we do it securely and stay compliant." | 2, 3 |
-| "**Build AI that lasts** — proper engineering discipline…" | "**Build sustainable AI systems**: proper engineering discipline…" | 10, 11 |
-| "ungoverned AI opening the door to data leakage, prompt injection, and unvetted models." | "ungoverned AI opening the door to data leakage, confidentiality breach, loss of availability or loss of integrity." | 8 |
-| "…where DR's real, un-solved decisions live:" | "…where we will add our specific guardrails, evals, rules, guidelines, QA, checks, human gates:" | 5, 8 |
+| "**Build AI that lasts** — proper engineering discipline…" | "**Build sustainable AI systems**: proper engineering discipline…" | 11, 12 |
+| "ungoverned AI opening the door to data leakage, prompt injection, and unvetted models." | "ungoverned AI opening the door to data leakage, confidentiality breach, loss of availability or loss of integrity." | 9 |
+| "…where DR's real, un-solved decisions live:" | "…where we will add our specific guardrails, evals, rules, guidelines, QA, checks, human gates:" | 5, 9 |
 | "This underpins the technology-selection mandate; without it, stack decisions are guesswork." | "This is an important base for target architectures and tech selections." | 4 |
 | "This matters as much as the technical requirements. … A strong architect who cannot do this will produce blueprints nobody adopts." | "The Principal AI Architect has a strong ability to influence others through sound, well-thought arguments, leading by example." | 3, 4 |
-| "Mandatory review is reserved for genuinely high-risk cases — anything touching personal data. Everything else flows through the paved road without sign-off, to avoid becoming a bottleneck." | "Mandatory review is reserved for high risk, high value, high cost or high impact use cases. Everything else goes through the agreed architecture and templates without explicit sign-off and subject to auditing." | 4, 8, 9 |
+| "Mandatory review is reserved for genuinely high-risk cases — anything touching personal data. Everything else flows through the paved road without sign-off, to avoid becoming a bottleneck." | "Mandatory review is reserved for high risk, high value, high cost or high impact use cases. Everything else goes through the agreed architecture and templates without explicit sign-off and subject to auditing." | 4, 9, 10 |
+| "Not required: Media / broadcasting domain knowledge. Quickly learned on the job; not worth narrowing an already-thin candidate pool." | "Not required: Media / broadcasting domain knowledge." | 8 |
+| "Out of scope: Building end-user AI use cases and solutions — this is the delivery teams' work, composed from the architect's approved blueprints." | "Out of scope: Building end-user AI use cases and solutions." | 8 |
 | (whole "## Success measures" section added by AI) | (section deleted) | 6 |
 
 ## Process
 
 1. Read the draft and identify the tells: em-dash labels, consequence-punchlines, metaphors, tricolons, self-reference, generic examples, added scaffolding.
-2. Rewrite each affected passage per the rules. Preserve all *information* — only remove *rhetoric*, or make abstractions concrete.
-3. If a passage is abstract, ask the user for the real specifics rather than inventing them (rule 8 fails badly if you fabricate the concrete detail).
+2. Rewrite each affected passage per the rules. Preserve all *decisions and facts* — remove rhetoric and reflexive per-line justifications (rule 8), or make abstractions concrete. Deliberate rationale someone would act on stays.
+3. If a passage is abstract, ask the user for the real specifics rather than inventing them (rule 9 fails badly if you fabricate the concrete detail).
 4. Show the result. Do not add a summary of "what I changed and why" unless asked — that is itself the meta-commentary rule 3 warns against.
 
 ## What NOT to do
 
-- **Don't invent concrete details** to satisfy rule 8. If you don't know the real team/system/number, ask or leave a clear placeholder.
-- **Don't strip information along with the rhetoric.** The goal is plainer, not thinner. A cut sentence should lose only flourish.
+- **Don't invent concrete details** to satisfy rule 9. If you don't know the real team/system/number, ask or leave a clear placeholder.
+- **Don't strip decisions or facts along with the rhetoric.** The goal is plainer, not thinner. A cut sentence should lose only flourish or a defensive justification — never a decision, a fact, or rationale worth acting on.
+- **Don't over-apply rule 8 to rationale documents.** In an ADR, a design doc's trade-off section, or anywhere the *point* is to record reasoning, justifications are the content. The rule targets the reflexive per-bullet defense, not documented reasoning.
 - **Don't over-correct into terse.** The user's register is plain and complete, not clipped. Full sentences, normal depth — just without the polish.
 - **Don't replicate genuine typos or errors.** Human drafts contain them; that is evidence of hand-editing, not a style to imitate. Write clean plain prose.
 - **Don't make every sentence identical in shape.** Plain ≠ monotonous. Natural repetition is fine (rule 13); mechanical repetition is not the target.
@@ -83,9 +87,10 @@ These are real AI→user rewrites. They calibrate the register better than the r
 
 - [ ] No em-dash after a bold label (colons instead)
 - [ ] No consequence-punchlines at the ends of points
+- [ ] No reflexive per-bullet justifications (deliberate, actionable rationale kept)
 - [ ] No metaphor-per-paragraph; abstractions replaced with concrete specifics
 - [ ] No unrequested scaffolding sections
 - [ ] No self-referential meta-commentary ("this matters", "crucially", "it's worth noting")
 - [ ] Written from the inside ("we"/"our") where appropriate
-- [ ] All original information preserved — only rhetoric removed
+- [ ] All decisions, facts, and actionable rationale preserved — only rhetoric and defensive justifications removed
 - [ ] No fabricated specifics
