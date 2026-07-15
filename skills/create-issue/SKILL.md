@@ -18,7 +18,7 @@ Skill used when a user explicitly wants to create an issue on a codebase.
 
 You **must always strictly** follow this workflow when implementing a feature:
 
-1. **Grill the user**: make sure you understand the problem the user is facing or the solution the user is proposing. Grill the user with questions to make sure you understand what the core issue is and what needs to be done. 
+1. **Grill the user**: make sure you understand the problem the user is facing or the solution the user is proposing. Grill the user with questions to make sure you understand what the core issue is and what needs to be done. You **must** use the `grill-me` skill to do this.
 2. **Understand which Feature this belongs to**. The issue must be related to one or more Features. Understand which ones it relates to and keep a trace of which files the features are documented in. All features are documented under `docs/features`. 
 3. **Create a Github issue**. Create an issue in the repo linked to this codebase. 
 
