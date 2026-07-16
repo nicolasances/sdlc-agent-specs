@@ -47,6 +47,7 @@ You **must always strictly** follow this workflow when preparing the implementat
 - Keep it simple: no need to have 100 tasks. 1-3 tasks for a fix should be more than enough.
 
 **Rules for creating the feature branch:**
+- [ ] Make sure you start from the main branch. If you are not on the main branch, switch to it first. This is **fundamental** to avoid creating a feature branch that is not up to date with the main branch.
 - [ ] Always pull the latest changes from the main branch before creating a feature branch. Without this step, you risk creating a feature branch that is not up to date with the main branch.
 - [ ] Only create a feature branch if the codebase is not already in a branch. If the codebase is already in a branch, you can work in that branch and skip this step.
 - [ ] The feature branch must be named `feature/<fix-name>` where <fix-name> is a short name (dash-separated-words) of the feature.
