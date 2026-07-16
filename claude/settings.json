@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(npm test *)",
+      "Bash(npx jest *)",
+      "Bash(npx mocha *)",
+      "Bash(git commit *)",
+      "Bash(git remote get-url *)",
+      "Bash(git checkout -b *)",
+      "Bash(git add *)",
+      "Bash(gh label list *)",
+      "Bash(gh issue view *)",
+      "Bash(gh api repos/nicolasances/sdlc-agent-specs/contents/coding-standards/toto-microservice-development.md *)",
+      "Bash(* --version)",
+      "Bash(* --help *)"
+    ]
+  },
+  "model": "sonnet",
+  "theme": "dark"
+}
