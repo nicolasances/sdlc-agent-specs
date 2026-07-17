@@ -9,6 +9,7 @@
       "Bash(git remote get-url *)",
       "Bash(git checkout -b *)",
       "Bash(git add *)",
+      "Bash(gh repo view *)",
       "Bash(gh label list *)",
       "Bash(gh issue view *)",
       "Bash(gh api repos/nicolasances/sdlc-agent-specs/contents/coding-standards/toto-microservice-development.md *)",
