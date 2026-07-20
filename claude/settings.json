@@ -9,6 +9,7 @@
       "Bash(git remote get-url *)",
       "Bash(git checkout -b *)",
       "Bash(git add *)",
+      "Bash(git fetch *)",
       "Bash(git pull *)",
       "Bash(gh repo view *)",
       "Bash(gh label list *)",
