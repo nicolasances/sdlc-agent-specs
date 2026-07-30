@@ -14,6 +14,7 @@
       "Bash(gh repo view *)",
       "Bash(gh label list *)",
       "Bash(gh issue view *)",
+      "Bash(gh pr diff *)",
       "Bash(gh api repos/nicolasances/sdlc-agent-specs/contents/coding-standards/toto-microservice-development.md *)",
       "Bash(* --version)",
       "Bash(* --help *)"
