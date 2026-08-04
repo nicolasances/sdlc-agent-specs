@@ -5,6 +5,7 @@
       "Bash(npm test *)",
       "Bash(npx jest *)",
       "Bash(npx mocha *)",
+      "Bash(npx eslint *)",
       "Bash(git commit *)",
       "Bash(git remote get-url *)",
       "Bash(git checkout -b *)",
