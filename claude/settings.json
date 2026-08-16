@@ -7,6 +7,7 @@
       "Bash(npx mocha *)",
       "Bash(npx eslint *)",
       "Bash(git commit *)",
+      "Bash(git log *)",
       "Bash(git remote get-url *)",
       "Bash(git checkout -b *)",
       "Bash(git add *)",
