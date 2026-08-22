@@ -1,19 +1,18 @@
 ---
-name: product-ideate
-description: Refines ideas iteratively. Refine ideas through structured divergent and convergent thinking. Use "ideate" to trigger.
+name: ideate-feature
+description: Refines feature ideas iteratively. Refine ideas through structured divergent and convergent thinking. Use "ideate" to trigger.
 ---
 
-# Product Ideate
+# Ideate Feature
 
-Refines raw ideas into sharp, actionable concepts worth building through structured divergent and convergent thinking.
+Refines raw feature ideas into sharp, actionable concepts worth building through structured divergent and convergent thinking.
 
 ## Starting point
-
+   
 Either of these starting points is accepted: 
 
-- A plain text description of an idea, feature, or problem the user wants to solve. 
+- A plain text description of an idea for a feature, or problem the user wants to solve. 
 - A document with the description of an idea, to be refined.
-- A GitHub issue URL in any of the user's repositories. The issue title and description are the raw idea to refine.
 
 ## How It Works
 
@@ -28,26 +27,14 @@ This skill is primarily an interactive dialogue. Invoke it with an idea, and the
 **Trigger Phrases:**
 - "Help me refine this idea"
 - "Help me refine this feature"
-- "Refine this idea [GitHub issue URL]"
-- "Brainstorm with me on [concept]"
 - "I have an idea for a feature"
-- "Help me work on a concept"
-- "Let's continue working on [idea or concept]"
 
 ## Output
 
-The final output is the creation (after user confirmation) of a Markdown file that documents the refined idea. The final markdown one-pager contains:
+The final output is the creation (after user confirmation) of a Markdown file that documents the refined feature description. 
+The markdown file **MUST** fully adhere to the feature document template that can be found in the Github repo: `nicolasances/sdlc-agent-specs/doc-standards/feature-template.md`. 
 
-- Table of Contents
-- Purpose & Scope (What / Who / Problems / Out of scope)
-- Core Concepts
-- Features
-- Data Models 
-- Key User Stories
-- Constraints & Assumptions
-- Open Questions
-- Not Doing list
-- Ideas for future versions
+Failure to adhere to the template will result in the feature being rejected by the team. 
 
 ## Detailed Instructions
 
@@ -118,123 +105,23 @@ After the user reacts to Phase 1 (indicates which ideas resonate, pushes back, a
 
 **Be honest, not supportive.** If an idea is weak, say so with kindness. A good ideation partner is not a yes-machine. Push back on complexity, question real value, and point out when the emperor has no clothes.
 
-#### Phase 3: Sharpen & Ship
+#### Phase 3: Create & Ship
 
-Produce a concrete artifact — a GitHub issue with a markdown one-pager that moves work forward:
+This phase consist of the following steps: 
+`1. Create artifact > 2. Ship artifact > 3. Track on Git`
 
-- Table of Contents
-- Purpose & Scope (What / Who / Problems / Out of scope)
-- Core Concepts
-- Features
-- Data Models 
-- Key User Stories
-- Constraints & Assumptions
-- Open Questions
-- Not Doing list
-- Ideas for future versions
+**Create the artifact:**
+Produce a concrete artifact — a markdown one-pager — that captures the refined idea. The one-pager **MUST** fully adhere to the feature document template that can be found in the Github repo: `nicolasances/sdlc-agent-specs/doc-standards/feature-template.md`.
 
-```markdown
-# [Idea Name]
+Feature documents must be stored in the target repo (most likely the one that the user is working from) in the `docs/features` folder. The user **MUST** confirm where to store the document.
 
-## Table of Contents
+Note that feature documents have a tag that tracks the status. Make sure the feature is marked as "open" as this feature has not yet been implemented.
 
-1. [Purpose & Scope](#1-purpose--scope)
-2. [Core Concepts](#2-core-concepts)
-3. [Features](#3-features)
-4. [Data Models](#4-data-models)
-5. [Key User Stories](#5-key-user-stories)
-6. [Constraints & Assumptions](#6-constraints--assumptions)
-7. [Open Questions](#7-open-questions)
-8. [Not Doing (and Why)](#8-not-doing-and-why)
-9. [Ideas for Future Versions](#9-ideas-for-future-versions)
+**Ship the artifact:**
+After the user confirms the final version of the document, you must **commit and push** on the **main** branch of the target repo. 
 
----
-
-## 1. Purpose & Scope
-
-### 1.1 What is this?
-[A description of the idea and what it does]
-
-### 1.2 Who is it for?
-[The specific target user and their context]
-
-### 1.3 What problems does it solve?
-- [Problem 1]
-- [Problem 2]
-
-### 1.4 Out of scope (v1)
-- [Thing deliberately excluded]
-- [Thing deliberately excluded]
-
----
-
-## 2. Core Concepts
-A table of core concepts (glossary of concepts) that this idea relies on. The table has 
-- a `term` column that states the name of the concept
-- a `definition` column that explains the concept
-
----
-
-## 3. Features
-[A list of core features that define this idea]
-
-### 3.1 [Feature 1 Name]
-[Detailed description of the feature, how it should work, etc.]
-
-### 3.2 [Feature 2 Name]
-[Detailed description of the feature, how it should work, etc.]
-
----
-
-## 4. Data Models
-[All the data models that are needed to better understand and stress test the idea]
-
----
-
-## 5. Key User Stories
-
-| # | As a user, I want to… | So that… |
-|---|---|---|
-| US-01 | [action] | [goal] |
-| US-02 | [action] | [goal] |
-
----
-
-## 6. Constraints and Assumptions
-- [Assumption 1] - [Description and implications]
-- [Assumption 2] - [Description and implications]
-
-- [Constraint 1] - [Description and implications]
-- [Constraint 2] - [Description and implications]
-
----
-
-## 7. Open Questions
-
-| # | Question | Options / Notes |
-|---|---|---|
-| OQ-01 | [Question] | [Options or notes] |
-| OQ-02 | [Question] | [Options or notes] |
-
----
-
-## 8. Not Doing (and Why)
-- [Thing 1] — [reason]
-- [Thing 2] — [reason]
-- [Thing 3] — [reason]
-
----
-
-## 9. Ideas for Future Versions
-- [Idea 1] - [description]
-- [Idea 2] - [description]
-
-```
-
-**The "Not Doing" list is arguably the most valuable part.** Focus is about saying no to good ideas. Make the trade-offs explicit.
-
-Ask the user where to store the created document (path) or update the current document (if the starting point was an existing document). **Only create if they confirm**.
-
+**Track on Git:**
+In Github, create a new issue in the target repo and link the feature document to it. The issue should be titled with the feature name and have a description that summarizes the feature.
 
 ### Anti-patterns to Avoid
 
@@ -260,6 +147,7 @@ Direct, thoughtful, slightly provocative. You're a sharp thinking partner, not a
 - Producing a plan without a "Not Doing" list
 - Ignoring existing codebase constraints when ideating inside a project
 - Jumping straight to Phase 3 output without running Phases 1 and 2
+- Finishing Phase 3 without having pushed the final document to the target repo and created a Github issue for it
 
 ## Verification
 
@@ -271,4 +159,5 @@ After completing an ideation session:
 - [ ] Hidden assumptions are explicitly listed with validation strategies
 - [ ] A "Not Doing" list makes trade-offs explicit
 - [ ] The output is a concrete artifact (markdown one-pager), not just conversation
-- [ ] The user confirmed the final direction before any implementation work
+- [ ] The user confirmed the final direction
+- [ ] The final document was pushed to the target repo and a Github issue was created for it
