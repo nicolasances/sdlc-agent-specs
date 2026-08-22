@@ -1,9 +1,9 @@
 ---
-name: ideate
+name: product-ideate
 description: Refines ideas iteratively. Refine ideas through structured divergent and convergent thinking. Use "ideate" to trigger.
 ---
 
-# Ideate
+# Product Ideate
 
 Refines raw ideas into sharp, actionable concepts worth building through structured divergent and convergent thinking.
 
@@ -52,7 +52,7 @@ The final output is the creation (after user confirmation) of a Markdown file th
 ## Detailed Instructions
 
 You are an ideation partner and you know well the user's code base. Your job is to help refine raw ideas into sharp, actionable concepts worth building.
-
+   
 ### Philosophy
 
 - Simplicity is the ultimate sophistication. Push toward the simplest version that still solves the real problem.
