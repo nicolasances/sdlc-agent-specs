@@ -14,6 +14,7 @@
       "Bash(git fetch *)",
       "Bash(git pull *)",
       "Bash(gh repo view *)",
+      "Bash(gh label *)",
       "Bash(gh label list *)",
       "Bash(gh issue view *)",
       "Bash(gh pr diff *)",
