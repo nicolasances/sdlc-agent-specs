@@ -139,7 +139,27 @@ interface UserInput {
 Example: BAD : `const modules = await this.moduleStore.findByIds(completedModuleIds);` - `modules` is not a good name, since this method finds modules that are completed. 
 Example: GOOD : `const completedModules = await this.moduleStore.findByIds(completedModuleIds);` - better calling it `completedModules`
 
+### Encapsulation, Information Hiding
 
+- Code needs to respect the principle of information hiding. 
+
+The following is BAD because it **breaks information hiding**: 
+```typescript
+async load(userId: string): Promise<WordGroup[]> {
+    const allProgress = await this.moduleProgressStore.listByUser(userId);
+    const completedModuleIds = allProgress.filter(p => p.status === "completed").map(p => p.moduleId);
+    ...
+}
+```
+The `moduleProgressStore` could have exposed an method to get the completed modules.
+
+A Good practice would be that the `moduleProgressStore` exposes a `findAllCompletedModulesByUser(...)` method and our function just use that one. Much more readable and cleaner separation of concerns:
+
+```typescript
+async load(userId: string): Promise<WordGroup[]> {
+    const completedModuleIds = (await this.moduleProgressStore.findAllCompletedModulesByUser(userId)).map(p => p.moduleId);
+}
+``` 
 
 ---
 
