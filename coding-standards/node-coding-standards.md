@@ -133,6 +133,14 @@ interface UserInput {
 - Database integration **must** always happen in a "Store" class. E.g. `SentenceStore` will contain all the methods to read and write objects in the `sentence` collection.
 - When using MongoDB, no need to wrap `ObjectId` in a try-catch statement. It is ok that a runtime exception is thrown, if the rest of the service is well built (e.g. validation) this should never happen. So **do not do this**: `try { oid = new ObjectId(sentenceId); } catch { ... }`. Just do `new ObjectId(sentenceId)` instead and use it.
 
+### Name of Variables
+
+- Variables must have descriptive names, without being too verbose. 
+Example: BAD : `const modules = await this.moduleStore.findByIds(completedModuleIds);` - `modules` is not a good name, since this method finds modules that are completed. 
+Example: GOOD : `const completedModules = await this.moduleStore.findByIds(completedModuleIds);` - better calling it `completedModules`
+
+
+
 ---
 
 ## Tests
